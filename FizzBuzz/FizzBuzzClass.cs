@@ -16,29 +16,32 @@
 {
     public  string FizzBuzz(int numberLine){
 
-        if(numberLine % 3 == 0 && numberLine%5 == 0){
+        
+        if(numberLine<0){
+
+            if(numberLine%3 == 0){
+            return "Buzz";
+            }
+
+            if(numberLine%5 == 0){
+            return "Fizz";
+            } 
+
+        
+        } else {
+
+            if(numberLine % 3 == 0 && numberLine%5 == 0){
             return "FizzBuzz";
-        }
+            }
 
-        if(numberLine%3== 0 && numberLine<0) {
-            return "Buzz";
-        }
-        
-        if(numberLine%3 == 0){
+            if(numberLine%3 == 0){
             return "Fizz";
-        }
+            }
 
-        if(numberLine%5== 0 && numberLine<0) {
-            return "Fizz";
-        }
-        
-        if(numberLine%5 == 0){
+            if(numberLine%5 == 0){
             return "Buzz";
+            }
         }
-
-        
-        
-
         
         return "";
     }
