@@ -99,5 +99,17 @@ namespace FizzBuzz
             result.ShouldBe(expected);
         }
 
+        [Test]
+
+        public void GiveAnEmptyStringWhenNegativeNumberIsNotDivisableByThreeAndFiveIsProvided(){
+            var numberLine = -1;
+            var expected = "";
+
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+
+        }
+
     }
 }
