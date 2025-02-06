@@ -78,6 +78,16 @@ namespace FizzBuzz
 
             result.ShouldBe(expected);
         }
+
+        [Test]
+        public void GiveBuzzFizzWhenANegativeNumberDivisableByThreeAndFiveIsProvided() {
+            var numberLine = -15;
+            var expected = "BuzzFizz";
+
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+        }
         
 
     }

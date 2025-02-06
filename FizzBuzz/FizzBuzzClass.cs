@@ -17,29 +17,33 @@
     public  string FizzBuzz(int numberLine){
 
         
-        if(numberLine<0){
+        if(numberLine<0) {
+
+            if(numberLine % 3 == 0 && numberLine%5 == 0){
+                return "BuzzFizz";
+            }
 
             if(numberLine%3 == 0){
-            return "Buzz";
+                return "Buzz";
             }
 
             if(numberLine%5 == 0){
-            return "Fizz";
+                return "Fizz";
             } 
 
         
         } else {
 
             if(numberLine % 3 == 0 && numberLine%5 == 0){
-            return "FizzBuzz";
+                return "FizzBuzz";
             }
 
             if(numberLine%3 == 0){
-            return "Fizz";
+                return "Fizz";
             }
 
             if(numberLine%5 == 0){
-            return "Buzz";
+                return "Buzz";
             }
         }
         
