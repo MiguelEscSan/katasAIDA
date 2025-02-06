@@ -46,8 +46,29 @@ namespace FizzBuzz
             var result = new FizzBuzzClass().FizzBuzz(numberLine);
 
             result.ShouldBe(expected);
-
-
         }
+
+        [Test]
+        public void GiveFizzBuzzWhenZeroIsProvided() {
+            var numberLine = 0;
+            var expected = "FizzBuzz";
+
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+        }
+
+
+        [Test]
+        public void GiveBuzzWhenANegativeNumberDivisableByThreeIsProvided() {
+            var numberLine = -3;
+            var expected  = "Buzz";
+
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+        }
+        
+
     }
 }

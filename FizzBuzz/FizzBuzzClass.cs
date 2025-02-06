@@ -20,12 +20,14 @@
             return "FizzBuzz";
         }
         
+        if(numberLine%5 == 0 || (numberLine%3 == 0 && numberLine<0)){
+            return "Buzz";
+        }
+        
         if(numberLine%3 == 0){
             return "Fizz";
         }
-        if(numberLine%5 == 0){
-            return "Buzz";
-        }
+        
 
         
         return "";
