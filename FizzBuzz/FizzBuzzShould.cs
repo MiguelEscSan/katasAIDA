@@ -39,7 +39,7 @@ namespace FizzBuzz
 
 
         [Test]
-        public void GiveFizzBuzzWhenANumberIsDivisableByFiveAndThree(){
+        public void GiveFizzBuzzWhenANumberIsDivisableByFiveAndThreeIsProvided(){
             var numberLine = 15;
             var expected = "FizzBuzz";
 
