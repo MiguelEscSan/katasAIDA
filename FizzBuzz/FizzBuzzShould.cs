@@ -12,7 +12,7 @@ namespace FizzBuzz
             var number = 3;
             var expected  = "Fizz";
 
-            var result = FizzBuzz.GiveFizzBuzz(number);
+            var result = new FizzBuzzClass().FizzBuzz(number);
 
             result.ShouldBe(expected);
         }

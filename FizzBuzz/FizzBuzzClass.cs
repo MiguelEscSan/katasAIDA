@@ -12,9 +12,9 @@
  namespace FizzBuzz;
 
  
- public class FizzBuzz
+ public class FizzBuzzClass
 {
-    public  static string GiveFizzBuzz(int numberLine){
+    public  string FizzBuzz(int numberLine){
         if(numberLine%3 == 0){
             return "Fizz";
         }
