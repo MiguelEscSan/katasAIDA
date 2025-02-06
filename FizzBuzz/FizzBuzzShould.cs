@@ -8,7 +8,7 @@ namespace FizzBuzz
       [Test]
       public void GiveAnEmptyStringWhenOneIsProvided(){
         var numberLine = 1;
-        var expected = "";
+        var expected = "1";
 
         var result = new FizzBuzzClass().FizzBuzz(numberLine);
 
@@ -103,7 +103,7 @@ namespace FizzBuzz
 
         public void GiveAnEmptyStringWhenNegativeNumberIsNotDivisableByThreeAndFiveIsProvided(){
             var numberLine = -1;
-            var expected = "";
+            var expected = "-1";
 
             var result = new FizzBuzzClass().FizzBuzz(numberLine);
 

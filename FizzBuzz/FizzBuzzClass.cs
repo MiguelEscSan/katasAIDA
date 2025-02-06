@@ -43,7 +43,7 @@
             return "Fizz";
         } 
 
-        return "";
+        return numberLine.ToString();
     }
 
     public string getFizzBuzz(int numberLine) {
@@ -58,7 +58,7 @@
         if(numberLine%5 == 0){
             return "Buzz";
         }
-        return "";
+        return numberLine.ToString();
     }
 }
 
