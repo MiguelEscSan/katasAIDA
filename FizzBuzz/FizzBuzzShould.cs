@@ -17,7 +17,7 @@ namespace FizzBuzz
       }
       
         [Test]
-        public void GiveANumberDivisableByThreeShouldGiveFizz()
+        public void GiveFizzWhenANumberDivisableByThreeIsProvided()
         {
             var numberLine = 3;
             var expected  = "Fizz";
@@ -29,7 +29,7 @@ namespace FizzBuzz
 
         [Test]
         
-        public void GiveANumberDivisableByFiveShouldGiveBuzz() {
+        public void GiveBuzzWhenANumberIsDivisableByFiveIsProvided() {
             var numberLine = 5;
             var expected = "Buzz";
             
