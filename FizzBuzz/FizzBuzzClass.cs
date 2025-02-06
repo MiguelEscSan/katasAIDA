@@ -24,10 +24,9 @@
 
             return  getInvertedFizzBuzz((int)numberLine!);
 
-        } else {
-
-            return getFizzBuzz((int)numberLine!);
-        }
+        } 
+        return getFizzBuzz((int)numberLine!);
+        
     }
 
     public string getInvertedFizzBuzz(int numberLine){
