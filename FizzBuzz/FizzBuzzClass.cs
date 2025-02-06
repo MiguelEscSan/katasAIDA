@@ -24,41 +24,42 @@
 
             return  getInvertedFizzBuzz((int)numberLine!);
 
-        
         } else {
 
-            if(numberLine % 3 == 0 && numberLine%5 == 0){
-                return "FizzBuzz";
-            }
-
-            if(numberLine%3 == 0){
-                return "Fizz";
-            }
-
-            if(numberLine%5 == 0){
-                return "Buzz";
-            }
+            return getFizzBuzz((int)numberLine!);
         }
-        
-        return "";
     }
 
     public string getInvertedFizzBuzz(int numberLine){
 
         if(numberLine % 3 == 0 && numberLine%5 == 0){
-                return "BuzzFizz";
-            }
+            return "BuzzFizz";
+        }
 
-            if(numberLine%3 == 0){
-                return "Buzz";
-            }
+        if(numberLine%3 == 0){
+            return "Buzz";
+        }
 
-            if(numberLine%5 == 0){
-                return "Fizz";
-            } 
+        if(numberLine%5 == 0){
+            return "Fizz";
+        } 
 
-            return "";
-        
+        return "";
+    }
+
+    public string getFizzBuzz(int numberLine) {
+        if(numberLine % 3 == 0 && numberLine%5 == 0){
+            return "FizzBuzz";
+        }
+
+        if(numberLine%3 == 0){
+            return "Fizz";
+        }
+
+        if(numberLine%5 == 0){
+            return "Buzz";
+        }
+        return "";
     }
 }
 
