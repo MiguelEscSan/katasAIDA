@@ -37,6 +37,16 @@ namespace FizzBuzz
             result.ShouldBe(expected);
         }
 
+        [Test]
+
+        public void GiveBuzzIfWhenNothingIsProvided(){
+            var expected = "BuzzIf";
+
+            var result =  new FizzBuzzClass().FizzBuzz();
+
+            result.ShouldBe(expected);
+        }
+
 
         [Test]
         public void GiveFizzBuzzWhenANumberIsDivisableByFiveAndThreeIsProvided(){

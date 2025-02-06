@@ -14,8 +14,11 @@
  
  public class FizzBuzzClass
 {
-    public  string FizzBuzz(int numberLine){
+    public  string FizzBuzz(int? numberLine = null){
 
+        if(numberLine == null){
+            return "BuzzIf";
+        }
         
         if(numberLine<0) {
 
