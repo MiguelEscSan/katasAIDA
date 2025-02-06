@@ -7,10 +7,10 @@ namespace FizzBuzz
       
       [Test]
       public void GiveAnEmptyStringWhenOneIsProvided(){
-        var number = 1;
+        var numberLine = 1;
         var expected = "";
 
-        var result = new FizzBuzzClass().FizzBuzz(number);
+        var result = new FizzBuzzClass().FizzBuzz(numberLine);
 
         result.ShouldBe(expected);
 
@@ -19,10 +19,10 @@ namespace FizzBuzz
         [Test]
         public void GiveANumberDivisableByThreeShouldGiveFizz()
         {
-            var number = 3;
+            var numberLine = 3;
             var expected  = "Fizz";
 
-            var result = new FizzBuzzClass().FizzBuzz(number);
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
 
             result.ShouldBe(expected);
         }
