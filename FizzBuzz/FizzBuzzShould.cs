@@ -98,7 +98,6 @@ namespace FizzBuzz
 
             result.ShouldBe(expected);
         }
-        
 
     }
 }
