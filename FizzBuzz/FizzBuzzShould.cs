@@ -26,5 +26,16 @@ namespace FizzBuzz
 
             result.ShouldBe(expected);
         }
+
+        [Test]
+        
+        public void GiveANumberDivisableByFiveShouldGiveBuzz() {
+            var numberLine = 5;
+            var expected = "Buzz";
+            
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+        }
     }
 }

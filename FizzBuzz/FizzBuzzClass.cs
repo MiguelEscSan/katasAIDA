@@ -18,6 +18,9 @@
         if(numberLine%3 == 0){
             return "Fizz";
         }
+        if(numberLine%5 == 0){
+            return "Buzz";
+        }
         return "";
     }
 }
