@@ -69,6 +69,16 @@ namespace FizzBuzz
             result.ShouldBe(expected);
         }
         
+        [Test]
+        public void GiveFizzWhenANegativeNumberDivisableByFiveIsProvided(){
+            var numberLine = -5;
+            var expected  = "Fizz";
+
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+        }
+        
 
     }
 }

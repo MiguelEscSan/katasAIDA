@@ -28,6 +28,10 @@
             return "Fizz";
         }
 
+        if(numberLine%5== 0 && numberLine<0) {
+            return "Fizz";
+        }
+        
         if(numberLine%5 == 0){
             return "Buzz";
         }
