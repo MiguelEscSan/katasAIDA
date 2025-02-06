@@ -28,7 +28,6 @@ namespace FizzBuzz
         }
 
         [Test]
-        
         public void GiveBuzzWhenANumberIsDivisableByFiveIsProvided() {
             var numberLine = 5;
             var expected = "Buzz";
@@ -36,6 +35,19 @@ namespace FizzBuzz
             var result = new FizzBuzzClass().FizzBuzz(numberLine);
 
             result.ShouldBe(expected);
+        }
+
+
+        [Test]
+        public void GiveFizzBuzzWhenANumberIsDivisableByFiveAndThree(){
+            var numberLine = 15;
+            var expected = "FizzBuzz";
+
+            var result = new FizzBuzzClass().FizzBuzz(numberLine);
+
+            result.ShouldBe(expected);
+
+
         }
     }
 }
