@@ -9,7 +9,7 @@ public class PasswordValidatorShould {
 
     [SetUp]
     public void SetUp() {
-        sut = new PasswordValidatorFactory().getPasswordValidator(PasswordValidatorType.First);
+        sut = new FirstPasswordValidator();
     }
 
     [Test]

@@ -6,11 +6,8 @@ namespace PasswordValidator;
                     return new FirstPasswordValidator();
                 case PasswordValidatorType.Second :
                     return new SecondPasswordValidator();
-
                 default : 
                     throw new NotSupportedException();
-
-
             }
         }
     }

@@ -13,7 +13,7 @@ namespace PasswordValidator.Tests
 
     [SetUp]
     public void SetUp() {
-        sut = new PasswordValidatorFactory().getPasswordValidator(PasswordValidatorType.Second);
+        sut = new SecondPasswordValidator();
     }
 
     [Test]
