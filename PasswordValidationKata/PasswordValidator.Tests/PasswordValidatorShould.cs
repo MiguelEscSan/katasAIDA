@@ -78,5 +78,13 @@ public class PasswordValidatorShould {
         
     }
 
+    [Test]
+    public void not_allow_when_password_not_contains_a_capital_letter_and_the_second_validator_is_used(){
+        var password = "conduccion";
+
+        var result = sut.getPasswordValidator(PasswordValidatorType.second).ValidatePassword(password);
+
+        result.Should().BeFalse();
+    }
 }
 
