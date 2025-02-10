@@ -3,7 +3,7 @@ namespace PasswordValidator;
         public IPasswordValidator getPasswordValidator (PasswordValidatorType passwordValidatorType){
             switch (passwordValidatorType){
                 case PasswordValidatorType.first :
-                    return new PasswordValidator();
+                    return new FirstPasswordValidator();
                 case PasswordValidatorType.second :
                     return new SecondPasswordValidator();
 

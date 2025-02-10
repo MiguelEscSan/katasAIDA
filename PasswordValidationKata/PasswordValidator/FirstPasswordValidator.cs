@@ -2,7 +2,7 @@
 namespace PasswordValidator
 {
 
-    public class PasswordValidator : IPasswordValidator{
+    public class FirstPasswordValidator : IPasswordValidator{
 
         public bool ValidatePassword(string password){
             bool isValid = true;
