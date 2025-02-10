@@ -87,10 +87,13 @@ public class PasswordValidatorShould {
         result.Should().BeFalse();
     }
 
+    [Test]
+    public void not_allow_when_password_not_contains_lower_case_and_the_second_validator_is_used(){
+        var password = "CONDUCCION";
 
+        var result = sut.getPasswordValidator(PasswordValidatorType.Second).ValidatePassword(password);
 
-    
-
-    
+        result.Should().BeFalse();
+    }
 }
 
