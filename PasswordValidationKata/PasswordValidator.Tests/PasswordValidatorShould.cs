@@ -104,5 +104,25 @@ public class PasswordValidatorShould {
 
         result.Should().BeFalse();
     }
+
+     [Test]
+    public void give_true_when_password_is_valid_and_the_second_validator_is_used() {
+        var password = "CONDUccion9";
+
+        var result = sut.getPasswordValidator(PasswordValidatorType.Second).ValidatePassword(password);
+
+        result.Should().BeTrue();
+    }
+
+    [Test]
+
+
+    public void not_allow_when__all_rules_are_valid_except_number_rule_first_validator_is_used(){
+        var password = "Holaquetal_";
+
+        var result = sut.getPasswordValidator(PasswordValidatorType.First).ValidatePassword(password);
+
+        result.Should().BeFalse();
+    }
 }
 

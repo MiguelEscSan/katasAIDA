@@ -4,10 +4,10 @@ namespace PasswordValidator
     {
 
         public static bool PasswordHasUnderscoreCharacter(string password) {
-            return (password.Contains('_'));
+            return password.Contains('_');
         }
         public static bool PasswordHasANumericCharacter(string password) {
-            return (password.All(character => char.IsNumber(character) is true));
+            return password.Any(character => char.IsNumber(character) is true);
         } 
         
     }
