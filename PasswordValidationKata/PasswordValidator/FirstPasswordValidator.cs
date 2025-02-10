@@ -13,19 +13,11 @@ namespace PasswordValidator
 
             if(password.All(char.IsUpper)) return false;
 
-            isValid = PasswordHasANumericCharacter(password);
+            isValid = PasswordValidatorHelper.PasswordHasANumericCharacter(password);
 
-            isValid = PasswordHasUnderscoreCharacter(password);
+            isValid = PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password);
 
             return isValid;
-        }
-
-        public bool PasswordHasANumericCharacter(string password) {
-            return (password.All(character => char.IsNumber(character) is true));
-        } 
-
-        public bool PasswordHasUnderscoreCharacter(string password) {
-            return (password.Contains('_'));
         }
 
     }

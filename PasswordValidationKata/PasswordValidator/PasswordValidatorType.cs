@@ -1,3 +1,5 @@
 public enum PasswordValidatorType {
-    first,second,third
+    First,
+    Second,
+    Third
 }
