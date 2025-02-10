@@ -68,5 +68,15 @@ public class PasswordValidatorShould {
         result.Should().BeTrue();
     }
 
+    [Test]
+    public void not_allow_when_pass_is_less_than_6_characters_and_the_second_validator_is_used() {
+       var password = "12345";
+        
+       var result = sut.getPasswordValidator(PasswordValidatorType.second).ValidatePassword(password);
+
+        result.Should().BeFalse();
+        
+    }
+
 }
 
