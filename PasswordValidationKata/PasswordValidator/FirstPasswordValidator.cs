@@ -15,11 +15,9 @@ namespace PasswordValidator
 
             isValid = PasswordValidatorHelper.PasswordHasANumericCharacter(password);
 
-
             isValid &= PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password);
 
             return isValid;
         }
-
     }
 }
