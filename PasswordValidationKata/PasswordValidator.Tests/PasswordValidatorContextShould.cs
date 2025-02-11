@@ -10,25 +10,18 @@ namespace PasswordValidator.Tests
 {
     public class PasswordValidatorContextShould
     {
-
-        [Test]
-        public void give_false() {
-            string password = "";
-
-            var result = new PasswordValidatorContext(new MockPasswordValidator(false)).ValidatePassword(password);
-
-            result.Should().BeFalse();
-            
-        }
-
-        [Test]  
-        public void give_true() {
+        
+        [TestCase(false, TestName = "give false when validator doesn't allow the password")]
+        [TestCase(true, TestName = "give true when validator allows the password")]
+        public void give_result_of_validation(bool isValid){
             string password = "hello";
 
-            var result = new PasswordValidatorContext( new MockPasswordValidator(true)).ValidatePassword(password);
+            var result = new PasswordValidatorContext( new MockPasswordValidator(isValid)).ValidatePassword(password);
 
-            result.Should().BeTrue();
+            result.Should().Be(isValid);
         }
+
+
 
         class MockPasswordValidator : IPasswordValidator {
 
