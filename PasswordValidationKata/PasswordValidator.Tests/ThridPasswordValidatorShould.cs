@@ -42,6 +42,14 @@ namespace PasswordValidator.Tests
             result.Should().BeFalse();
         }
 
+        [Test]
+        public void not_allowed_when_password_doesnt_have_underscore_charactere() {
+            var password = "AAAAAAAAAAAAAAAAAAAAAaAA32AAAAAAAAAAAAA";
+
+            var result = new ThirdPasswordValidator().ValidatePassword(password);
+
+            result.Should().BeFalse();
+        }
 
     }
 }

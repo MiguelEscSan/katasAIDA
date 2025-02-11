@@ -15,6 +15,6 @@ public class ThirdPasswordValidator: IPasswordValidator{
 
         if(!password.Any(char.IsLower)) return false;
 
-        return true;
+        return (PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password));
     }
 }
