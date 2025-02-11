@@ -1,4 +1,4 @@
-using FluentAssertions;
+using Shouldly;
 
 namespace PasswordValidator.Tests;
 
@@ -18,7 +18,7 @@ public class PasswordValidatorShould {
         
        var result = sut.ValidatePassword(password);
 
-        result.Should().BeFalse();
+        result.ShouldBe(false);
         
     }
 
@@ -28,7 +28,7 @@ public class PasswordValidatorShould {
 
         var result = sut.ValidatePassword(password);
 
-        result.Should().BeFalse();
+        result.ShouldBe(false);
     }
 
     [Test]
@@ -37,7 +37,7 @@ public class PasswordValidatorShould {
 
         var result = sut.ValidatePassword(password);
 
-        result.Should().BeFalse();
+        result.ShouldBe(false);
     }
 
    [Test]
@@ -46,7 +46,7 @@ public class PasswordValidatorShould {
 
         var result = sut.ValidatePassword(password);
 
-        result.Should().BeFalse();
+        result.ShouldBe(false);
    }
 
    [Test]
@@ -55,7 +55,7 @@ public class PasswordValidatorShould {
 
         var result = sut.ValidatePassword(password);
 
-        result.Should().BeFalse();
+        result.ShouldBe(false);
     }
 
     [Test]
@@ -64,7 +64,7 @@ public class PasswordValidatorShould {
 
         var result = sut.ValidatePassword(password);
 
-        result.Should().BeFalse();
+        result.ShouldBe(false);
     }
 
     [Test]
@@ -73,7 +73,7 @@ public class PasswordValidatorShould {
 
         var result = sut.ValidatePassword(password);
 
-        result.Should().BeTrue();
+        result.ShouldBe(true);
     }
 
 }
