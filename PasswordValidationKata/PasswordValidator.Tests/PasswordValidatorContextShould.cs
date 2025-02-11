@@ -42,7 +42,6 @@ namespace PasswordValidator.Tests
             }
         }
 
-
         class MockPasswordValidator : IPasswordValidator {
 
             bool isValid;
@@ -53,22 +52,6 @@ namespace PasswordValidator.Tests
             public bool ValidatePassword(string password){
                 return this.isValid;
             }
-        }
-
-        
-        
-    }
-
-    public class PasswordValidatorContext {
-
-        IPasswordValidator passwordValidator;
-
-        public PasswordValidatorContext( IPasswordValidator passwordValidator) {
-            this.passwordValidator = passwordValidator;
-        }
-
-        public bool ValidatePassword(string password) {
-            return passwordValidator.ValidatePassword(password);
-        }
-    }
+        }  
+    }    
 }
