@@ -11,6 +11,8 @@ public class ThirdPasswordValidator: IPasswordValidator{
     {
         if(password.Length < 16) return false;
 
+        if(!password.Any(char.IsUpper)) return false;
+
         return true;
     }
 }
