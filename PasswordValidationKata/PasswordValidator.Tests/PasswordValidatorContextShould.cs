@@ -21,6 +21,26 @@ namespace PasswordValidator.Tests
             result.Should().Be(isValid);
         }
 
+        [Test]
+        public void use_the_password_for_validation() {
+
+            var password = "hello";
+
+            var spyPasswordValidator = new SpyPasswordValidator();
+            var PasswordValidatorContext = new PasswordValidatorContext( spyPasswordValidator );
+            PasswordValidatorContext.ValidatePassword( password );
+
+            spyPasswordValidator.password.Should().Be(password);
+        }
+
+        class SpyPasswordValidator: IPasswordValidator {
+            public string password;    
+
+            public bool ValidatePassword(string password){
+                this.password = password;
+                return true;
+            }
+        }
 
 
         class MockPasswordValidator : IPasswordValidator {
@@ -31,10 +51,11 @@ namespace PasswordValidator.Tests
                 this.isValid = isValid;
             }
             public bool ValidatePassword(string password){
-
                 return this.isValid;
             }
         }
+
+        
         
     }
 
@@ -44,11 +65,10 @@ namespace PasswordValidator.Tests
 
         public PasswordValidatorContext( IPasswordValidator passwordValidator) {
             this.passwordValidator = passwordValidator;
-
         }
 
         public bool ValidatePassword(string password) {
-            return passwordValidator.ValidatePassword("");
+            return passwordValidator.ValidatePassword(password);
         }
     }
 }
