@@ -51,5 +51,14 @@ namespace PasswordValidator.Tests
             result.Should().BeFalse();
         }
 
+        [Test]
+        public void allowed_when_password_satisfied_all_conditions() {
+            var password = "AAAAAAasasdAAA32AAAAAAAAAAaAA32AAAA_AAAAAAAAA";
+
+            var result = new ThirdPasswordValidator().ValidatePassword(password);
+
+            result.Should().BeTrue();
+        }
+
     }
 }
