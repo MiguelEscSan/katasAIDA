@@ -9,9 +9,9 @@ namespace PasswordValidator
 
             if(password.Length < 6) return false;
 
-            if(password.All(char.IsLower)) return false;
+            if(!password.Any(char.IsLower)) return false;
 
-            if(password.All(char.IsUpper)) return false;
+            if(!password.Any(char.IsUpper)) return false;
 
             isValid = PasswordValidatorHelper.PasswordHasANumericCharacter(password);
 
