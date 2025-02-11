@@ -4,11 +4,20 @@ namespace PasswordValidator.Tests
 {
     public class ThirdPasswordValidatorShould
     {
+
+        IPasswordValidator sut;
+
+        [SetUp]
+        public void Setup()
+        {
+            sut = new ThirdPasswordValidator();
+        }
+
         [Test]
         public void not_allowed_when_password_is_empty(){
             var password ="";
 
-            var result = new ThirdPasswordValidator().ValidatePassword(password);
+            var result = sut.ValidatePassword(password);
             
             result.Should().BeFalse();
 
@@ -18,7 +27,7 @@ namespace PasswordValidator.Tests
         public void not_allowed_when_password_has_less_than_sixteen_characters(){
             var password = "holaquetal";
 
-            var result = new ThirdPasswordValidator().ValidatePassword(password);
+            var result = sut.ValidatePassword(password);
             
             result.Should().BeFalse();
 
@@ -28,7 +37,7 @@ namespace PasswordValidator.Tests
         public void not_allowed_when_password_doesnt_have_upper_case(){
             var password = "holaquetalestosonm1asdecharacteres";
 
-            var result = new ThirdPasswordValidator().ValidatePassword(password);
+            var result = sut.ValidatePassword(password);
             
             result.Should().BeFalse();
         }
@@ -37,7 +46,7 @@ namespace PasswordValidator.Tests
         public void not_allowed_when_password_doesnt_have_lowercase_characteres() {
             var password = "AAAAAAAAAAAAAAAAAAAAAAAA32_AAAAAAAAAAAAA";
 
-            var result = new ThirdPasswordValidator().ValidatePassword(password);
+            var result = sut.ValidatePassword(password);
 
             result.Should().BeFalse();
         }
@@ -46,7 +55,7 @@ namespace PasswordValidator.Tests
         public void not_allowed_when_password_doesnt_have_underscore_charactere() {
             var password = "AAAAAAAAAAAAAAAAAAAAAaAA32AAAAAAAAAAAAA";
 
-            var result = new ThirdPasswordValidator().ValidatePassword(password);
+            var result = sut.ValidatePassword(password);
 
             result.Should().BeFalse();
         }
@@ -55,7 +64,7 @@ namespace PasswordValidator.Tests
         public void allowed_when_password_satisfied_all_conditions() {
             var password = "AAAAAAasasdAAA32AAAAAAAAAAaAA32AAAA_AAAAAAAAA";
 
-            var result = new ThirdPasswordValidator().ValidatePassword(password);
+            var result = sut.ValidatePassword(password);
 
             result.Should().BeTrue();
         }
