@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Threading.Tasks;
 using FluentAssertions;
 
 
@@ -28,7 +23,7 @@ namespace PasswordValidator.Tests
 
             var spyPasswordValidator = new SpyPasswordValidator();
             var PasswordValidatorContext = new PasswordValidatorContext( spyPasswordValidator );
-            PasswordValidatorContext.ValidatePassword( password );
+            PasswordValidatorContext.ValidatePassword(password);
 
             spyPasswordValidator.password.Should().Be(password);
         }
@@ -43,7 +38,6 @@ namespace PasswordValidator.Tests
         }
 
         class MockPasswordValidator : IPasswordValidator {
-
             bool isValid;
     
             public MockPasswordValidator(bool isValid) {
