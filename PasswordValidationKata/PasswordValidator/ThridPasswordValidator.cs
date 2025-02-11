@@ -13,6 +13,8 @@ public class ThirdPasswordValidator: IPasswordValidator{
 
         if(!password.Any(char.IsUpper)) return false;
 
+        if(!password.Any(char.IsLower)) return false;
+
         return true;
     }
 }

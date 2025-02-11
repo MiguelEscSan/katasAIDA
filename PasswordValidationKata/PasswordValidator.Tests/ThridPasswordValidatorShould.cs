@@ -31,7 +31,17 @@ namespace PasswordValidator.Tests
             var result = new ThirdPasswordValidator().ValidatePassword(password);
             
             result.Should().BeFalse();
-
         }
+
+        [Test]
+        public void not_allowed_when_password_doesnt_have_lowercase_characteres() {
+            var password = "AAAAAAAAAAAAAAAAAAAAAAAA32_AAAAAAAAAAAAA";
+
+            var result = new ThirdPasswordValidator().ValidatePassword(password);
+
+            result.Should().BeFalse();
+        }
+
+
     }
 }
