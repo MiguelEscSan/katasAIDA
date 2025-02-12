@@ -1,5 +1,5 @@
 namespace PasswordValidator.ValidationRules;
-public class IsLowerValidationRule : ValidationRule
+public class HasLowerCaseCharacter : ValidationRule
 {
 
     public bool Validate(string password)

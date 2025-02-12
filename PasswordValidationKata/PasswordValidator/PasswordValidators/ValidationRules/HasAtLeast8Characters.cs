@@ -1,5 +1,5 @@
 namespace PasswordValidator.ValidationRules;
-public class LengthValidationRule : ValidationRule
+public class HasAtLeast8Characters : ValidationRule
 {
     public bool Validate(string password)
     {

@@ -1,5 +1,5 @@
 namespace PasswordValidator.ValidationRules;
-public class UpperValidationRule : ValidationRule
+public class HasCapitalLetter : ValidationRule
 {
     public bool Validate(string password)
     {

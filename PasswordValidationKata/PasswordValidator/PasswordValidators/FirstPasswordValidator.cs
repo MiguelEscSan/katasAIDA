@@ -5,11 +5,11 @@ namespace PasswordValidator
     public class FirstPasswordValidator : IPasswordValidator{
         public bool ValidatePassword(string password){
             
-            if(new LengthValidationRule().Validate(password) is false) return false;
+            if(new HasAtLeast8Characters().Validate(password) is false) return false;
 
-            if(new IsLowerValidationRule().Validate(password) is false) return false;
+            if(new HasLowerCaseCharacter().Validate(password) is false) return false;
 
-            if(new UpperValidationRule().Validate(password) is false) return false;
+            if(new HasCapitalLetter().Validate(password) is false) return false;
 
             if(PasswordValidatorHelper.PasswordHasANumericCharacter(password) is false) return false;
 
