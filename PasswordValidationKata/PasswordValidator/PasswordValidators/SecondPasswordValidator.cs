@@ -5,7 +5,7 @@ public class SecondPasswordValidator : IPasswordValidator{
 
     List<ValidationRule> rules;
     public SecondPasswordValidator() {
-        this.rules = [new HasAtLeast6Characters(), new HasAtLeast8Characters(), new HasCapitalLetter(), new HasNumericCharacter()];
+        this.rules = [new HasAtLeast6Characters(), new HasLowerCaseCharacter(), new HasCapitalLetter(), new HasNumericCharacter()];
     }
 
     public bool ValidatePassword(string password){
