@@ -1,19 +1,14 @@
+using PasswordValidator.ValidationRules;
+namespace PasswordValidator;
 
-namespace PasswordValidator
-{
+public class SecondPasswordValidator : IPasswordValidator{
 
-    public class SecondPasswordValidator : IPasswordValidator{
+    List<ValidationRule> rules;
+    public SecondPasswordValidator() {
+        this.rules = [new HasAtLeast6Characters(), new HasAtLeast8Characters(), new HasCapitalLetter(), new HasNumericCharacter()];
+    }
 
-        public bool ValidatePassword(string password){
-
-            if(password.Length < 6) return false;
-
-            if(!password.Any(char.IsLower)) return false;
-
-            if(!password.Any(char.IsUpper)) return false;
-
-            return PasswordValidatorHelper.PasswordHasANumericCharacter(password);
-
-        }
+    public bool ValidatePassword(string password){
+        return this.rules.All(rule => rule.Validate(password));
     }
 }

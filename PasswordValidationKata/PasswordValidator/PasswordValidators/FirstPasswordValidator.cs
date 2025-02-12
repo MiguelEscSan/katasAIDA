@@ -3,11 +3,15 @@ namespace PasswordValidator
 {
 
     public class FirstPasswordValidator : IPasswordValidator{
-        public bool ValidatePassword(string password){
 
-            List<ValidationRule> rules = [new HasAtLeast8Characters(), new HasAtLeast8Characters(), new HasCapitalLetter(), new HasNumericCharacter(), new HasUnderscoreCharacter()];
-            
-            return rules.All(rule => rule.Validate(password));
+        List<ValidationRule> rules;
+
+        public FirstPasswordValidator() {
+            this.rules = [new HasAtLeast8Characters(), new HasAtLeast8Characters(), new HasCapitalLetter(), new HasNumericCharacter(), new HasUnderscoreCharacter()];
+        }
+
+        public bool ValidatePassword(string password){
+            return this.rules.All(rule => rule.Validate(password));
         }
     }
 }
