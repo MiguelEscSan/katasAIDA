@@ -1,6 +1,3 @@
-using FluentAssertions;
-using Shouldly;
-
 namespace PasswordValidator.Tests
 {
     public class ThirdPasswordValidatorShould

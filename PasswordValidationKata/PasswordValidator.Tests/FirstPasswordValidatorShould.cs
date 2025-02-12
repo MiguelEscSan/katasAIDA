@@ -1,5 +1,3 @@
-using Shouldly;
-
 namespace PasswordValidator.Tests;
 
 public class PasswordValidatorShould {
