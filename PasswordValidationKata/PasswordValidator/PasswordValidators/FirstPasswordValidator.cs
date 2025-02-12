@@ -13,9 +13,9 @@ namespace PasswordValidator
 
             if(!password.Any(char.IsUpper)) return false;
 
-            isValid = PasswordValidatorHelper.PasswordHasANumericCharacter(password);
+            if(PasswordValidatorHelper.PasswordHasANumericCharacter(password) is false) return false;
 
-            isValid &= PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password);
+            if(PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password) is false) return false;
 
             return isValid;
         }
