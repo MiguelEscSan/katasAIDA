@@ -5,7 +5,7 @@ namespace PasswordValidator
     public class FirstPasswordValidator : IPasswordValidator{
 
         public bool ValidatePassword(string password){
-            bool isValid = true;
+            
 
             if(password.Length < 8) return false;
 
@@ -17,7 +17,7 @@ namespace PasswordValidator
 
             if(PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password) is false) return false;
 
-            return isValid;
+            return true;
         }
     }
 }
