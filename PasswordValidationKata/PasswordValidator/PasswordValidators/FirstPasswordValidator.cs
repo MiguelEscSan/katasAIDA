@@ -4,18 +4,10 @@ namespace PasswordValidator
 
     public class FirstPasswordValidator : IPasswordValidator{
         public bool ValidatePassword(string password){
+
+            List<ValidationRule> rules = [new HasAtLeast8Characters(), new HasAtLeast8Characters(), new HasCapitalLetter(), new HasNumericCharacter(), new HasUnderscoreCharacter()];
             
-            if(new HasAtLeast8Characters().Validate(password) is false) return false;
-
-            if(new HasLowerCaseCharacter().Validate(password) is false) return false;
-
-            if(new HasCapitalLetter().Validate(password) is false) return false;
-
-            if(new HasNumericCharacter().Validate(password) is false) return false;
-
-            if(new HasUnderscoreCharacter().Validate(password) is false) return false;
-
-            return true;
+            return rules.All(rule => rule.Validate(password));
         }
     }
 }
