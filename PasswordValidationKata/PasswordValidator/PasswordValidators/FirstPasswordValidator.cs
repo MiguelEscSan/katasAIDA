@@ -11,7 +11,7 @@ namespace PasswordValidator
 
             if(new HasCapitalLetter().Validate(password) is false) return false;
 
-            if(PasswordValidatorHelper.PasswordHasANumericCharacter(password) is false) return false;
+            if(new HasNumericCharacter().Validate(password) is false) return false;
 
             if(PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password) is false) return false;
 
