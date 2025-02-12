@@ -7,7 +7,7 @@ namespace PasswordValidator
             
             if(new LengthValidationRule().Validate(password) is false) return false;
 
-            if(!password.Any(char.IsLower)) return false;
+            if(new IsLowerValidationRule().Validate(password) is false) return false;
 
             if(new UpperValidationRule().Validate(password) is false) return false;
 

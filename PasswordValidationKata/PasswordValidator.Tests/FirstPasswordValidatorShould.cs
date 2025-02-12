@@ -2,7 +2,6 @@ namespace PasswordValidator.Tests;
 
 public class PasswordValidatorShould {
 
-
     IPasswordValidator sut;
 
     [SetUp]
