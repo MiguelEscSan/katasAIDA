@@ -13,7 +13,7 @@ namespace PasswordValidator
 
             if(new HasNumericCharacter().Validate(password) is false) return false;
 
-            if(PasswordValidatorHelper.PasswordHasUnderscoreCharacter(password) is false) return false;
+            if(new HasUnderscoreCharacter().Validate(password) is false) return false;
 
             return true;
         }
