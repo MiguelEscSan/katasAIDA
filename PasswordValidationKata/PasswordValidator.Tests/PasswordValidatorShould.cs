@@ -75,6 +75,14 @@ public class PasswordValidatorShould
             result.ShouldBe(true);
         }
 
+        [Test]
+        public void not_allow_when_password_validator_only_have_numeric_and_uppercase_rule_and_password_doesnt_contains_numeric_character() {
+            var password = "HOL_AMUNDOTecEMOSLETRASJAAJA";
 
+            List<ValidationRule> rules = [ new HasCapitalLetter(),  new HasNumericCharacter(), ];
 
+            var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
+
+            result.ShouldBe(false);
+        }
 }
