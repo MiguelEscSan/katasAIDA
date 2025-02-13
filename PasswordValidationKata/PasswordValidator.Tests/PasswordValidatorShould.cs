@@ -14,8 +14,18 @@ public class PasswordValidatorShould
             var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
 
             result.ShouldBe(false);
-            
+        
+        }
 
+        [Test]
+        public void allow_when_passwordValidator_has_no_validation_rules(){
+            var password = "";
+            List<ValidationRule> rules = [];
+
+            var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
+
+            result.ShouldBe(true);
+        
         }
 
 }
