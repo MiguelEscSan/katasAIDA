@@ -9,7 +9,7 @@ public class FirstPasswordValidatorShould {
     [SetUp]
     public void SetUp() {
         //  List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(8), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter(), new HasUnderscoreCharacter()];
-        List<Func<string, bool>> rules = new List<Func<string, bool>>() {     RulesFunctions.HasCapitalLetter,    RulesFunctions.HasLowerCaseCharacter,    RulesFunctions.HasNumericCharacter,     RulesFunctions.HasUnderscoreCharacter,     RulesFunctions.HasAtLeastMinimunCharacters(8)};
+        List<Func<string, bool>> rules = new List<Func<string, bool>>() {RulesFunctions.HasCapitalLetter,RulesFunctions.HasLowerCaseCharacter,RulesFunctions.HasNumericCharacter, RulesFunctions.HasUnderscoreCharacter,RulesFunctions.HasAtLeastMinimunCharacters(8)};
         sut = new PasswordValidatorClass(rules);
     }
 
