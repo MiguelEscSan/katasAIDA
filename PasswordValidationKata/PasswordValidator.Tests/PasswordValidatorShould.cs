@@ -28,4 +28,17 @@ public class PasswordValidatorShould
         
         }
 
+        [Test]
+        public void not_allowed_when_password_does_not_contain_uppercase(){
+            var password = "holaestosonmasde22_ocho";
+            List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(8), new HasCapitalLetter()];
+
+            var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
+
+            result.ShouldBe(false);
+        
+        }
+
+
+
 }
