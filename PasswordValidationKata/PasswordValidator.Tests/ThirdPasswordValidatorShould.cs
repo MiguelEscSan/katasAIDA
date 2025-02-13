@@ -1,3 +1,4 @@
+using PasswordValidator.ValidationRules;
 namespace PasswordValidator.Tests
 {
     public class ThirdPasswordValidatorShould
@@ -6,10 +7,12 @@ namespace PasswordValidator.Tests
         IPasswordValidator sut;
 
         [SetUp]
-        public void Setup()
-        {
-            sut = new ThirdPasswordValidator();
+        public void SetUp() {
+            List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(16), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasUnderscoreCharacter()];
+
+            sut = new PasswordValidatorClass(rules);
         }
+
 
         [Test]
         public void not_allowed_when_password_is_empty(){

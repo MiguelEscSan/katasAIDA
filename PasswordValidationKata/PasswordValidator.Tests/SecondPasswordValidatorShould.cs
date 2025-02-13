@@ -1,3 +1,4 @@
+using PasswordValidator.ValidationRules;
 namespace PasswordValidator.Tests
 {
     public class SecondPasswordValidatorShould
@@ -7,8 +8,11 @@ namespace PasswordValidator.Tests
 
         [SetUp]
         public void SetUp() {
-            sut = new SecondPasswordValidator();
+            List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(6), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter()];
+
+            sut = new PasswordValidatorClass(rules);
         }
+
 
         [Test]
         public void not_allow_when_pass_is_less_than_6_characters_and_the_second_validator_is_used() {

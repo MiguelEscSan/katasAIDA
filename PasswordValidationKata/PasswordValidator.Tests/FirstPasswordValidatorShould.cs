@@ -1,12 +1,16 @@
+using PasswordValidator.ValidationRules;
 namespace PasswordValidator.Tests;
 
 public class FirstPasswordValidatorShould {
 
     IPasswordValidator sut;
+    
 
     [SetUp]
     public void SetUp() {
-        sut = new FirstPasswordValidator();
+         List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(8), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter(), new HasUnderscoreCharacter()];
+
+        sut = new PasswordValidatorClass(rules);
     }
 
     [Test]
