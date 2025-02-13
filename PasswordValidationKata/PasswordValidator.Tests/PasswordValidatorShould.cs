@@ -65,6 +65,16 @@ public class PasswordValidatorShould
             result.ShouldBe(false);
         }
 
+        [Test]
+        public void allow_when_password_satisfy_all_restrinctions() {
+            var password = "HOL_AMUNDOTecEMOSLETRAS22JAAJA";
+            List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(16), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter(), new HasUnderscoreCharacter()];
+
+            var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
+
+            result.ShouldBe(true);
+        }
+
 
 
 }
