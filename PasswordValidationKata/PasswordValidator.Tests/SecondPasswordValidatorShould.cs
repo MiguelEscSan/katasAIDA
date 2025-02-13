@@ -8,8 +8,8 @@ namespace PasswordValidator.Tests
 
         [SetUp]
         public void SetUp() {
-            List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(6), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter()];
-
+            // List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(6), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter()];
+            List<Func<string, bool>> rules = new List<Func<string, bool>>() {     RulesFunctions.HasCapitalLetter,    RulesFunctions.HasLowerCaseCharacter,    RulesFunctions.HasNumericCharacter, RulesFunctions.HasAtLeastMinimunCharacters(6) };
             sut = new PasswordValidatorClass(rules);
         }
 
