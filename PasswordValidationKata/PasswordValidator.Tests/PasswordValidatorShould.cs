@@ -43,7 +43,16 @@ public class PasswordValidatorShould
             var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
 
             result.ShouldBe(false);
-        
+        }
+
+        [Test]
+        public void not_allowed_when_password_does_not_contain_numeric_character(){
+            var password = "HOLAMUNDOTecEMOSLETRAS_JAAJA";
+            List<ValidationRule> rules = [ new HasAtLeastminimumCharacters(16), new HasCapitalLetter(), new HasLowerCaseCharacter(), new HasNumericCharacter()];
+
+            var result = new  PasswordValidatorClass(rules).ValidatePassword(password);
+
+            result.ShouldBe(false);
         }
 
 
