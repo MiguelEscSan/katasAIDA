@@ -1,6 +1,6 @@
 namespace PasswordValidator.Tests;
 
-public class PasswordValidatorShould {
+public class FirstPasswordValidatorShould {
 
     IPasswordValidator sut;
 
