@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordValidator", "Passwo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordValidator.Tests", "PasswordValidationKata\PasswordValidator.Tests\PasswordValidator.Tests.csproj", "{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoversSimple", "MarsRovers\MarsRoversSimple\MarsRoversSimple.csproj", "{C18C072C-9D8B-4A19-9C29-A02A80B43E40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoversSimple.Tests", "MarsRovers\MarsRoversSimple.Tests\MarsRoversSimple.Tests.csproj", "{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
