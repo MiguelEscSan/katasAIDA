@@ -24,4 +24,14 @@ public class MarsRoversShould
 
         result.ShouldBe(expected);
     }
+
+    [Test]
+    public void give_current_position_when_rovers_changes_orientation(){
+        string command = "L";
+        string expected = "0:0:W";
+
+        var result = new MarsRoversSimple().Execute(command);
+
+        result.ShouldBe(expected);
+    }
 }

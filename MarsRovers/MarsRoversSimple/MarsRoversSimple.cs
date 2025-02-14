@@ -13,19 +13,23 @@ public class MarsRoversSimple : MarsRovers {
             if(letter == "M" && this.currentPosition.currentOrientation == "N") {
                 this.currentPosition.currentCoordinates.y += 1;
             }
+            if(letter == "L" && this.currentPosition.currentOrientation == "N"){
+                this.currentPosition.currentOrientation = "W";
+
+            }
         }
         return this.currentPosition.ToString();
     }
 }
 
-public class GameBoard {
+// public class GameBoard {
 
-    int height;
-    int width;
+//     int height;
+//     int width;
 
-    public GameBoard(int height = 10, int width = 10) {
-        this.height = height;
-        this.width = width;
-    }
+//     public GameBoard(int height = 10, int width = 10) {
+//         this.height = height;
+//         this.width = width;
+//     }
 
-}
+// }
