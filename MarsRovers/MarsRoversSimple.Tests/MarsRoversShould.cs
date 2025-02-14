@@ -25,23 +25,18 @@ public class MarsRoversShould
         result.ShouldBe(expected);
     }
 
-    [Test]
-    public void give_west_when_rovers_changes_orientation_from_north_to_the_left(){
-        string command = "L";
-        string expected = "0:0:W";
+    [TestCase("L", "0:0:W", TestName = "move from North to West")]
+    [TestCase("R", "0:0:E", TestName = "move from North to East")]
+    [TestCase("RR", "0:0:S", TestName = "move from North to South only turning right")]
+    [TestCase("RRR", "0:0:W", TestName = "move from North to West only turning right")]
+    [TestCase("RRRR", "0:0:N", TestName = "move from North to North only turning right")]
+    [TestCase("LL", "0:0:S", TestName = "move from North to South only turning left")]
+    [TestCase("LLL", "0:0:E", TestName = "move from North to West only turning left")]
+    [TestCase("LLLL", "0:0:N", TestName = "move from North to North only turning left")]
+    public void changes_orientation(string command, string expected) {
 
         var result = new MarsRoversSimple().Execute(command);
 
         result.ShouldBe(expected);
     }
-    [Test]
-    public void give_east_when_rovers_changes_orientation_from_north_to_the_right(){
-        string command = "R";
-        string expected = "0:0:E";
-
-        var result = new MarsRoversSimple().Execute(command);
-
-        result.ShouldBe(expected);
-    }
-
 }

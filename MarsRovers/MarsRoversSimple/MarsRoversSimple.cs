@@ -9,18 +9,15 @@ public class MarsRoversSimple : MarsRovers {
 
 
     public string Execute(string command) {
-        foreach(var letter in command.Split()) {
-    
 
-            if(letter == "M"){
+        for(int position = 0; position < command.Length; position++) {
+            if(command[position] == 'M'){
                 this.MoveForward();
             }
 
-            if(letter == "L" || letter == "R"){
-                this.TurnDirection(letter);
-            }
-
-          
+            if(command[position] == 'L' || command[position] == 'R'){
+                this.TurnDirection(command[position].ToString());
+            }          
         }
         return this.currentPosition.ToString();
     }
