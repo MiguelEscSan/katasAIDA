@@ -3,8 +3,11 @@ public class MarsRoversSimple : MarsRovers {
 
     public Position currentPosition {get; set;}
 
+    public GameBoard gameBoard{get; set;}
+
     public MarsRoversSimple() {
         this.currentPosition = new Position(new Coordinates(0,0), "N");
+        this.gameBoard = new GameBoard();
     }
 
 
@@ -22,9 +25,28 @@ public class MarsRoversSimple : MarsRovers {
         return this.currentPosition.ToString();
     }
 
-    public void MoveForward(){
-        if(this.currentPosition.currentOrientation == "N") {
-                this.currentPosition.currentCoordinates.y += 1;
+    public void MoveForward() {
+
+        switch(this.currentPosition.currentOrientation) {
+            case "N":
+                if ((this.gameBoard.height -1) >= this.currentPosition.currentCoordinates.y) this.currentPosition.currentCoordinates.y++;
+                else this.currentPosition.currentCoordinates.y = 0;
+                break;
+            case "S":
+                if (this.currentPosition.currentCoordinates.y == 0) this.currentPosition.currentCoordinates.y = this.gameBoard.height - 1;
+                else this.currentPosition.currentCoordinates.y--;
+                // this.currentPosition.currentCoordinates.y -= 1;
+                break;
+            case "E":
+                this.currentPosition.currentCoordinates.x += 1;
+                break;
+            case "W":
+                this.currentPosition.currentCoordinates.x -= 1;
+                break;
+            default:
+                return;
+
+
         }
     }
 
@@ -54,14 +76,14 @@ public class MarsRoversSimple : MarsRovers {
     }
 }
 
-// public class GameBoard {
+public class GameBoard {
 
-//     int height;
-//     int width;
+    public int height {get;}
+    public int width {get;}
 
-//     public GameBoard(int height = 10, int width = 10) {
-//         this.height = height;
-//         this.width = width;
-//     }
+    public GameBoard(int height = 10, int width = 10) {
+        this.height = height;
+        this.width = width;
+    }
 
-// }
+}
