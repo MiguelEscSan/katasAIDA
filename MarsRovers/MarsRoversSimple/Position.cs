@@ -2,8 +2,8 @@ namespace MarsRoversSimple;
 
 public class Position {
 
-    Coordinates currentCoordinates;
-    string currentOrientation;
+    public Coordinates currentCoordinates {get; set;}
+    public string currentOrientation {get; set;}
 
     public Position(Coordinates coordinates, string currentOrientation) {
         this.currentCoordinates = coordinates;

@@ -14,4 +14,14 @@ public class MarsRoversShould
 
         result.ShouldBe(expected);
     }
+
+    [Test]
+    public void give_next_position_when_rovers_move_only_once_forward() {
+        string command = "M";
+        string expected = "0:1:N";
+
+        var result = new MarsRoversSimple().Execute(command);
+
+        result.ShouldBe(expected);
+    }
 }

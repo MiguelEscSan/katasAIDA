@@ -1,13 +1,20 @@
 namespace MarsRoversSimple;
 public class MarsRoversSimple : MarsRovers {
 
-    (int, int) currentCoordinates;
-    string currentOrientation;
-    
+    public Position currentPosition {get; set;}
+
+    public MarsRoversSimple() {
+        this.currentPosition = new Position(new Coordinates(0,0), "N");
+    }
+
 
     public string Execute(string command) {
-        var currentPosition = new Position(new Coordinates(0,0), "N");
-        return currentPosition.ToString();
+        foreach(var letter in command.Split()) {
+            if(letter == "M") {
+                this.currentPosition.currentCoordinates.y += 1;
+            }
+        }
+        return this.currentPosition.ToString();
     }
 }
 
