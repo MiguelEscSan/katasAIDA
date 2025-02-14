@@ -39,41 +39,12 @@ public class MarsRoversShould
 
         result.ShouldBe(expected);
     }
-
-    [Test]
-    public void move_south_when_rovers_move_only_once_forward_and_its_direction_is_South_and_at_the_border() {
-        string command = "RRM";
-        string expected = "0:9:S";
-
-        var result = new MarsRoversSimple().Execute(command);
-
-        result.ShouldBe(expected);
-    }
-
-    [Test]
-    public void move_east_when_rovers_move_only_once_forward_and_its_direction_is_East_and_at_the_border() {
-        string command = "RMMMMMMMMMMM";
-        string expected = "0:0:E";
-
-        var result = new MarsRoversSimple().Execute(command);
-
-        result.ShouldBe(expected);
-    }
-
-    [Test]
-    public void move_west_when_rovers_move_only_once_forward_and_its_direction_is_west_and_at_the_border() {
-        string command = "LM";
-        string expected = "9:0:W";
-
-        var result = new MarsRoversSimple().Execute(command);
-
-        result.ShouldBe(expected);
-    }
-
-    
-
+  
     [TestCase("RRM","0:9:S", TestName = "move south when rovers move only once forward and its direction is South and at the border ")]
-    [TestCase("RMMMMMMMMMMM","0:0:E", TestName = "move east when rovers move only once forward and its direction is East and at the border")]
+    [TestCase("RMMMMMMMMMM","0:0:E", TestName = "move east when rovers move only once forward and its direction is East and at the border")]
+    [TestCase("LM", "9:0:W", TestName = "move west when rovers move only once forward and its direction is West and at the border")]
+    [TestCase("MMMMMMMMMM", "0:0:N", TestName = "move north when rovers move only once forward and its direction is north and at the border")]
+
     public void move_to_the_other_side_when_out_of_bounds( string command, string expected ) {
         
         var result = new MarsRoversSimple().Execute(command);

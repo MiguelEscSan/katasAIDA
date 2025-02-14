@@ -29,7 +29,7 @@ public class MarsRoversSimple : MarsRovers {
 
         switch(this.currentPosition.currentOrientation) {
             case "N":
-                if ((this.gameBoard.height -1) >= this.currentPosition.currentCoordinates.y) this.currentPosition.currentCoordinates.y++;
+                if ((this.gameBoard.height-1) != this.currentPosition.currentCoordinates.y) this.currentPosition.currentCoordinates.y++;
                 else this.currentPosition.currentCoordinates.y = 0;
                 break;
             case "S":
@@ -37,7 +37,7 @@ public class MarsRoversSimple : MarsRovers {
                 else this.currentPosition.currentCoordinates.y--;
                 break;
             case "E":
-                if ((this.gameBoard.width -1) >= this.currentPosition.currentCoordinates.x) this.currentPosition.currentCoordinates.x++;
+                if ((this.gameBoard.width-1) != this.currentPosition.currentCoordinates.x) this.currentPosition.currentCoordinates.x++;
                 else this.currentPosition.currentCoordinates.x = 0;
                 break;
             case "W":
