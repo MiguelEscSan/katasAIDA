@@ -43,7 +43,6 @@ public class MarsRoversSimple : MarsRovers {
             case "W":
                 if (this.currentPosition.currentCoordinates.x == 0) this.currentPosition.currentCoordinates.x = this.gameBoard.width - 1;
                 else this.currentPosition.currentCoordinates.x--;
-                // this.currentPosition.currentCoordinates.x -= 1;
                 break;
             default:
                 return;
