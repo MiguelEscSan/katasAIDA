@@ -35,10 +35,10 @@ public class MarsRoversSimple : MarsRovers {
             case "S":
                 if (this.currentPosition.currentCoordinates.y == 0) this.currentPosition.currentCoordinates.y = this.gameBoard.height - 1;
                 else this.currentPosition.currentCoordinates.y--;
-                // this.currentPosition.currentCoordinates.y -= 1;
                 break;
             case "E":
-                this.currentPosition.currentCoordinates.x += 1;
+                if ((this.gameBoard.width -1) >= this.currentPosition.currentCoordinates.x) this.currentPosition.currentCoordinates.x++;
+                else this.currentPosition.currentCoordinates.x = 0;
                 break;
             case "W":
                 this.currentPosition.currentCoordinates.x -= 1;
