@@ -69,4 +69,11 @@ public class MarsRoversShould
 
         result.ShouldBe(expected);
     }
+
+    [TestCase("RRM","0:9:S", TestName = "move south when rovers move only once forward and its direction is South and at the border ")]
+    public void move_to_the_other_side_when_out_of_bounds( string command, string expected ) {
+        
+        var result = new MarsRoversSimple().Execute(command);
+        result.ShouldBe(expected);
+    }
 }
