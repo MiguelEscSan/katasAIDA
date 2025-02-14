@@ -10,7 +10,7 @@ public class MarsRoversSimple : MarsRovers {
 
     public string Execute(string command) {
         foreach(var letter in command.Split()) {
-            if(letter == "M") {
+            if(letter == "M" && this.currentPosition.currentOrientation == "N") {
                 this.currentPosition.currentCoordinates.y += 1;
             }
         }
