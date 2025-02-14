@@ -51,9 +51,19 @@ public class MarsRoversShould
     }
 
     [Test]
-    public void move_south_when_rovers_move_only_once_forward_and_its_direction_is_East_and_at_the_border() {
+    public void move_east_when_rovers_move_only_once_forward_and_its_direction_is_East_and_at_the_border() {
         string command = "RMMMMMMMMMMM";
         string expected = "0:0:E";
+
+        var result = new MarsRoversSimple().Execute(command);
+
+        result.ShouldBe(expected);
+    }
+
+    [Test]
+    public void move_west_when_rovers_move_only_once_forward_and_its_direction_is_west_and_at_the_border() {
+        string command = "LM";
+        string expected = "9:0:W";
 
         var result = new MarsRoversSimple().Execute(command);
 
