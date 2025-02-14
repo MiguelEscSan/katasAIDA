@@ -16,14 +16,11 @@ public class MarsRoversSimple : MarsRovers {
                 this.MoveForward();
             }
 
-            // if(letter == "L" && this.currentPosition.currentOrientation == "N"){
-            //     this.currentPosition.currentOrientation = "W";
-
-            // }
-
-            if(letter == "L"){
-                this.TurnDirection();
+            if(letter == "L" || letter == "R"){
+                this.TurnDirection(letter);
             }
+
+          
         }
         return this.currentPosition.ToString();
     }
@@ -34,10 +31,29 @@ public class MarsRoversSimple : MarsRovers {
         }
     }
 
-    public void TurnDirection(){
-        if(this.currentPosition.currentOrientation == "N"){
-            this.currentPosition.currentOrientation = "W";
+    public void TurnDirection(string orientationCommand){
+
+        List<string> orientations =["W", "N", "E","S"];
+        int orientationIndex = orientations.IndexOf(this.currentPosition.currentOrientation);
+
+        if(orientationCommand == "R" ){
+            if(orientationIndex >= orientations.Count -1){
+                this.currentPosition.currentOrientation = "W";
+            } else {
+                orientationIndex++ ;
+                this.currentPosition.currentOrientation = orientations[orientationIndex];
+            }
         }
+        if(orientationCommand == "L" ){
+            if(orientationIndex == 0){
+                this.currentPosition.currentOrientation = "S";
+            } else {
+                orientationIndex--;
+                this.currentPosition.currentOrientation = orientations[orientationIndex];
+            }
+        }
+
+
     }
 }
 
