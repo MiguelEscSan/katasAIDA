@@ -9,6 +9,12 @@ public class Coordinates {
         this.y = y;
     }
 
+    public  int NextCoordinates(int value, int max){
+        if (value < 0) return max -1;
+        if (value >= max) return 0;
+        return value;
+    }
+
     public string ToString() {
         return $"{x}:{y}";
     }

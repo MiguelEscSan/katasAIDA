@@ -1,34 +1,26 @@
+using MarsRoversSimple.MarsRoversStates;
+
 namespace MarsRoversSimple;
+
 public class MarsRoversSimple : MarsRovers {
 
     public Position currentPosition {get; set;}
 
     public GameBoard gameBoard{get; set;}
 
+    public MarsRoversState MarsRoversState;
+
     public MarsRoversSimple() {
-        this.currentPosition = new Position(new Coordinates(0,0), "N");
-        this.gameBoard = new GameBoard();
+        this.MarsRoversState = new LookingNorthMarsRoversState(new Coordinates(0,0));
     }
 
 
     public string Execute(string command) {
 
         for(int position = 0; position < command.Length; position++) {
-            switch(command[position]) {
-                case 'M':
-                    this.MoveForward();
-                    break;
-                case 'L':
-                    this.currentPosition.TurnLeft();
-                    break;
-                case 'R':
-                    this.currentPosition.TurnRight();
-                    break;
-                default:
-                    return "";
-            }       
+            this.MarsRoversState = this.MarsRoversState.Execute(command[position].ToString());
         }
-        return this.currentPosition.ToString();
+        return this.MarsRoversState.ToString();
     }
 
     public void MoveForward() {

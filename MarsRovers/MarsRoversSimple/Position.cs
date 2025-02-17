@@ -36,4 +36,6 @@ public class Position {
 
         this.currentOrientation = orientations[this.currentOrientation];
     }
+
+    
 }
