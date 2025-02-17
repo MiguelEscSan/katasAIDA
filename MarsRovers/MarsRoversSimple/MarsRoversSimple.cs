@@ -58,23 +58,12 @@ public class MarsRoversSimple : MarsRovers {
         int orientationIndex = orientations.IndexOf(this.currentPosition.currentOrientation);
 
         if(orientationCommand == "R" ){
-            if(orientationIndex >= orientations.Count -1){
-                this.currentPosition.currentOrientation = "W";
-            } else {
-                orientationIndex++ ;
-                this.currentPosition.currentOrientation = orientations[orientationIndex];
-            }
+            orientationIndex = (orientationIndex + 1) % orientations.Count;
         }
         if(orientationCommand == "L" ){
-            if(orientationIndex == 0){
-                this.currentPosition.currentOrientation = "S";
-            } else {
-                orientationIndex--;
-                this.currentPosition.currentOrientation = orientations[orientationIndex];
-            }
+            orientationIndex = (orientationIndex - 1 + orientations.Count) % orientations.Count;
         }
-
-
+        this.currentPosition.currentOrientation = orientations[orientationIndex];
     }
 }
 
