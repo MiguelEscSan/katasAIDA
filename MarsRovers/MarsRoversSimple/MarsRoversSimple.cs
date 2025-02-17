@@ -14,13 +14,17 @@ public class MarsRoversSimple : MarsRovers {
     public string Execute(string command) {
 
         for(int position = 0; position < command.Length; position++) {
-            if(command[position] == 'M'){
-                this.MoveForward();
-            }
-
-            if(command[position] == 'L' || command[position] == 'R'){
-                this.TurnDirection(command[position].ToString());
-            }          
+            switch(command[position]) {
+                case 'M':
+                    this.MoveForward();
+                    break;
+                case 'L':
+                case 'R':
+                    this.TurnDirection(command[position].ToString());
+                    break;
+                default:
+                    return "";
+            }       
         }
         return this.currentPosition.ToString();
     }
