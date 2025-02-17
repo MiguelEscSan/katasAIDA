@@ -28,27 +28,28 @@ public class MarsRoversSimple : MarsRovers {
     public void MoveForward() {
 
         switch(this.currentPosition.currentOrientation) {
+         
             case "N":
-                if ((this.gameBoard.height-1) != this.currentPosition.currentCoordinates.y) this.currentPosition.currentCoordinates.y++;
-                else this.currentPosition.currentCoordinates.y = 0;
+                this.currentPosition.currentCoordinates.y = NextCoordinates( this.currentPosition.currentCoordinates.y +1 , this.gameBoard.height);
                 break;
             case "S":
-                if (this.currentPosition.currentCoordinates.y == 0) this.currentPosition.currentCoordinates.y = this.gameBoard.height - 1;
-                else this.currentPosition.currentCoordinates.y--;
+                this.currentPosition.currentCoordinates.y = NextCoordinates( this.currentPosition.currentCoordinates.y -1 , this.gameBoard.height);
                 break;
             case "E":
-                if ((this.gameBoard.width-1) != this.currentPosition.currentCoordinates.x) this.currentPosition.currentCoordinates.x++;
-                else this.currentPosition.currentCoordinates.x = 0;
+                this.currentPosition.currentCoordinates.x = NextCoordinates( this.currentPosition.currentCoordinates.x +1 , this.gameBoard.width);
                 break;
             case "W":
-                if (this.currentPosition.currentCoordinates.x == 0) this.currentPosition.currentCoordinates.x = this.gameBoard.width - 1;
-                else this.currentPosition.currentCoordinates.x--;
+                this.currentPosition.currentCoordinates.x = NextCoordinates( this.currentPosition.currentCoordinates.x -1 , this.gameBoard.width);
                 break;
             default:
                 return;
-
-
         }
+    }
+
+    public  int NextCoordinates(int value, int max){
+        if (value < 0) return max -1;
+        if (value >= max) return 0;
+        return value;
     }
 
     public void TurnDirection(string orientationCommand){
