@@ -19,8 +19,10 @@ public class MarsRoversSimple : MarsRovers {
                     this.MoveForward();
                     break;
                 case 'L':
+                    this.currentPosition.TurnLeft();
+                    break;
                 case 'R':
-                    this.TurnDirection(command[position].ToString());
+                    this.currentPosition.TurnRight();
                     break;
                 default:
                     return "";
@@ -54,20 +56,6 @@ public class MarsRoversSimple : MarsRovers {
         if (value < 0) return max -1;
         if (value >= max) return 0;
         return value;
-    }
-
-
-
-    public void TurnDirection(string orientationCommand) {
-        Dictionary<string, Dictionary<string, string>> orientations = new Dictionary<string, Dictionary<string, string>>()
-        {
-            {"N", new Dictionary<string, string> {{"R", "E"}, {"L", "W"}}},
-            {"E", new Dictionary<string, string> {{"R", "S"}, {"L", "N"}}},
-            {"S", new Dictionary<string, string> {{"R", "W"}, {"L", "E"}}},
-            {"W", new Dictionary<string, string> {{"R", "N"}, {"L", "S"}}}
-        };
-    
-        this.currentPosition.currentOrientation = orientations[this.currentPosition.currentOrientation][orientationCommand];
     }
 }
     

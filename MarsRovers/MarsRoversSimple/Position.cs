@@ -14,4 +14,26 @@ public class Position {
         return $"{currentCoordinates.ToString()}:{currentOrientation}";
     }
 
+    public void TurnRight(){
+          Dictionary<string, string> orientations = new Dictionary<string, string>()
+        {
+            {"N", "E"},
+            {"E", "S"},
+            {"S","W"},
+            {"W", "N"}
+        };
+
+        this.currentOrientation = orientations[this.currentOrientation];
+    }
+    public void TurnLeft(){
+          Dictionary<string, string> orientations = new Dictionary<string, string>()
+        {
+            {"N", "W"},
+            {"E", "N"},
+            {"S","E"},
+            {"W", "S"}
+        };
+
+        this.currentOrientation = orientations[this.currentOrientation];
+    }
 }
