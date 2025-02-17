@@ -56,20 +56,21 @@ public class MarsRoversSimple : MarsRovers {
         return value;
     }
 
-    public void TurnDirection(string orientationCommand){
 
-        List<string> orientations =["W", "N", "E","S"];
-        int orientationIndex = orientations.IndexOf(this.currentPosition.currentOrientation);
 
-        if(orientationCommand == "R" ){
-            orientationIndex = (orientationIndex + 1) % orientations.Count;
-        }
-        if(orientationCommand == "L" ){
-            orientationIndex = (orientationIndex - 1 + orientations.Count) % orientations.Count;
-        }
-        this.currentPosition.currentOrientation = orientations[orientationIndex];
+    public void TurnDirection(string orientationCommand) {
+        Dictionary<string, Dictionary<string, string>> orientations = new Dictionary<string, Dictionary<string, string>>()
+        {
+            {"N", new Dictionary<string, string> {{"R", "E"}, {"L", "W"}}},
+            {"E", new Dictionary<string, string> {{"R", "S"}, {"L", "N"}}},
+            {"S", new Dictionary<string, string> {{"R", "W"}, {"L", "E"}}},
+            {"W", new Dictionary<string, string> {{"R", "N"}, {"L", "S"}}}
+        };
+    
+        this.currentPosition.currentOrientation = orientations[this.currentPosition.currentOrientation][orientationCommand];
     }
 }
+    
 
 public class GameBoard {
 
