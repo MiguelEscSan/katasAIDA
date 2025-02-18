@@ -50,4 +50,14 @@ public class MarsRoversShould
         var result = new MarsRoversSimple().Execute(command);
         result.ShouldBe(expected);
     }
+
+    [Test]
+    public void move_to_the_right_place_using_all_commands(){
+         string command = "MMRMMLM";
+        string expected = "2:3:N";
+
+        var result = new MarsRoversSimple().Execute(command);
+
+        result.ShouldBe(expected);
+    }
 }
