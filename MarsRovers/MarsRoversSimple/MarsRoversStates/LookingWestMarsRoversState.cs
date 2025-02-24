@@ -28,7 +28,7 @@ public class LookingWestMarsRoversState : MarsRoversState
         return new LookingSouthMarsRoversState(this.coordinates);
     }
     public MarsRoversState MoveForward() {
-        this.coordinates.x = this.coordinates.NextCoordinates(this.coordinates.x - 1, 10);
+        this.coordinates = this.coordinates.XAxisNextCoordinates(this.coordinates, -1);
         return new LookingWestMarsRoversState(this.coordinates);
     }
 
