@@ -41,9 +41,7 @@ public class BankAccountShould
     public void give_empty_when_depositing_zero(){
         var NewAccount = new Account();
         var Expected = new Account(){
-            BankStatement = new List<Transaction>{
-                new Transaction(0)
-            }
+            BankStatement = new Stack<Transaction>(new[] { new Transaction(0) })  
         };
         NewAccount.deposit(0);
         string ActualOutput = "";

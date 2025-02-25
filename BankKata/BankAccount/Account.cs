@@ -4,14 +4,14 @@ namespace BankAccount;
 
 public class Account : AccountService {
 
-    public List<Transaction> BankStatement;
+    public Stack<Transaction> BankStatement;
 
     public Account() {
-        BankStatement = new List<Transaction>();
+        BankStatement = new Stack<Transaction>();
     }
 
     public void deposit(int amount) {
-        BankStatement.Add(new Transaction(amount));
+        BankStatement.Push(new Transaction(amount));
     }
 
 
