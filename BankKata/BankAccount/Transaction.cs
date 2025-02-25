@@ -11,7 +11,7 @@ public class Transaction {
     }
 
     public override string ToString() {
-        return $"{FormatDate()} || {this.Amount} ";
+        return $"{FormatDate()} || {this.Amount}";
     }
 
     public string FormatDate() {

@@ -1,17 +1,15 @@
-using System.Collections.Generic;
- 
 namespace BankAccount;
 
 public class Account : AccountService {
 
-    public Stack<Transaction> BankStatement;
+    public List<Transaction> BankStatement;
 
     public Account() {
-        BankStatement = new Stack<Transaction>();
+        BankStatement = new List<Transaction>();
     }
 
     public void deposit(int amount) {
-        BankStatement.Push(new Transaction(amount));
+        BankStatement.Add(new Transaction(amount));
     }
 
 
@@ -21,10 +19,21 @@ public class Account : AccountService {
 
     public void printStatement() {
         System.Console.WriteLine("Date || Amount || Balance");
-        int CurrentBalance = 0;
-        foreach (Transaction transaction in BankStatement) {
-            CurrentBalance += transaction.Amount;
-            System.Console.WriteLine($"{transaction.ToString()} || {CurrentBalance}");
+
+        List<int> CurrentBalances = CalculateCurrentBalances();
+        
+        for(int i = BankStatement.Count - 1; i >= 0; i--) {
+            System.Console.WriteLine($"{BankStatement[i].ToString()} || {CurrentBalances[i]}");
         }
+    }
+
+    private List<int> CalculateCurrentBalances() {
+        List<int> Balances = new List<int>();
+        int amount = 0;
+        foreach (Transaction transaction in BankStatement) {
+            amount += transaction.Amount;
+            Balances.Add(amount);
+        }
+        return Balances;
     }
 }
