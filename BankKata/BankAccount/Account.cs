@@ -19,19 +19,21 @@ public class Account : AccountService {
 
     public void printStatement() {
         System.Console.WriteLine("Date || Amount || Balance");
-        List<int> CurrentBalances = new List<int>();
-        int amount = 0;
-        foreach (Transaction transaction in BankStatement) {
-            amount += transaction.Amount;
-            CurrentBalances.Add(amount);
-        }
 
+        List<int> CurrentBalances = CalculateCurrentBalances();
+        
         for(int i = BankStatement.Count - 1; i >= 0; i--) {
             System.Console.WriteLine($"{BankStatement[i].ToString()} || {CurrentBalances[i]}");
         }
+    }
 
-
-
-        // System.Console.WriteLine($"{transaction.ToString()} || {CurrentBalance}");
+    private List<int> CalculateCurrentBalances() {
+        List<int> Balances = new List<int>();
+        int amount = 0;
+        foreach (Transaction transaction in BankStatement) {
+            amount += transaction.Amount;
+            Balances.Add(amount);
+        }
+        return Balances;
     }
 }
