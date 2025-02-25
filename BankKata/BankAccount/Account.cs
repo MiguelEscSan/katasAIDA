@@ -1,17 +1,17 @@
+using System.Collections.Generic;
+ 
 namespace BankAccount;
 
 public class Account : AccountService {
 
-    List<Transaction> BankStatement;
-    int Balance;
+    public List<Transaction> BankStatement;
 
     public Account() {
         BankStatement = new List<Transaction>();
-        Balance = 0;
     }
 
     public void deposit(int amount) {
-        
+        BankStatement.Add(new Transaction(amount));
     }
 
 

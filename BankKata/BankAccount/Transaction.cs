@@ -15,6 +15,6 @@ public class Transaction {
     }
 
     public string FormatDate() {
-        return this.Date.ToString("dd/MM/YYYY");
+        return this.Date.ToString("dd/MM/yyyy");
     }
 }
