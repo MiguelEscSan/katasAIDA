@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{6842A367-BC6A-4E49-B620-1E226F1F2E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordValidator", "PasswordValidationKata\PasswordValidator\PasswordValidator.csproj", "{C18C072C-9D8B-4A19-9C29-A02A80B43E40}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordValidator.Tests", "PasswordValidationKata\PasswordValidator.Tests\PasswordValidator.Tests.csproj", "{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoversSimple", "MarsRovers\MarsRoversSimple\MarsRoversSimple.csproj", "{C18C072C-9D8B-4A19-9C29-A02A80B43E40}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoversSimple.Tests", "MarsRovers\MarsRoversSimple.Tests\MarsRoversSimple.Tests.csproj", "{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankKata", "BankKata", "{47B5E089-8D89-453E-A025-3C3D7720BDE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount.Test", "BankKata\BankAccount.Test\BankAccount.Test.csproj", "{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,7 +26,6 @@ Global
 		{6842A367-BC6A-4E49-B620-1E226F1F2E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6842A367-BC6A-4E49-B620-1E226F1F2E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6842A367-BC6A-4E49-B620-1E226F1F2E05}.Release|Any CPU.Build.0 = Release|Any CPU
-
 		{C18C072C-9D8B-4A19-9C29-A02A80B43E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C18C072C-9D8B-4A19-9C29-A02A80B43E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C18C072C-9D8B-4A19-9C29-A02A80B43E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,7 +34,12 @@ Global
 		{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA5E0AAC-3BD0-4D32-9D5F-DC0134849D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152} = {47B5E089-8D89-453E-A025-3C3D7720BDE5}
 	EndGlobalSection
 EndGlobal
-
-
