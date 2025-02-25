@@ -21,5 +21,10 @@ public class Account : AccountService {
 
     public void printStatement() {
         System.Console.WriteLine("Date || Amount || Balance");
+        int CurrentBalance = 0;
+        foreach (Transaction transaction in BankStatement) {
+            CurrentBalance += transaction.Amount;
+            System.Console.WriteLine($"{transaction.ToString()} || {CurrentBalance}");
+        }
     }
 }
