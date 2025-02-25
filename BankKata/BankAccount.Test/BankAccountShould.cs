@@ -64,8 +64,31 @@ public class BankAccountShould
 
         Console.SetOut(Console.Out);
     }
+    [Test] 
+    public void give_50_when_depositing_50(){
+        var NewAccount = new Account();
+        var Expected = new Account(){
+            BankStatement = new Stack<Transaction>(new[] { new Transaction(50) })  
+        };
+        NewAccount.deposit(50);
+        string ActualOutput = "";
+        string ExpectedOutput = "";
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            NewAccount.printStatement();
+            ActualOutput = stringWriter.ToString();
 
+            
+        }
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            Expected.printStatement();
+            ExpectedOutput = stringWriter.ToString();
+        } 
+        // string ExpectedOutput = "Date || Amount || Balance\n";
 
+        ActualOutput.ShouldBe(ExpectedOutput);
 
-
+        Console.SetOut(Console.Out);
+    }
 }
