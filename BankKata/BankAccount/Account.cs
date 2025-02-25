@@ -21,7 +21,7 @@ public class Account : AccountService {
         System.Console.WriteLine("Date || Amount || Balance");
 
         List<int> CurrentBalances = CalculateCurrentBalances();
-        
+
         for(int i = BankStatement.Count - 1; i >= 0; i--) {
             System.Console.WriteLine($"{BankStatement[i].ToString()} || {CurrentBalances[i]}");
         }
