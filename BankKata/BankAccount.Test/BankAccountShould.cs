@@ -7,15 +7,17 @@ namespace BankAccount.Test;
 public class BankAccountShould
 {
     DateProvider dateProvider;
+    Account NewAccount;
+
     [SetUp]
     public void Setup()
     {
         dateProvider = new DateProvider();
+        NewAccount = new Account(dateProvider);
     }
 
     [Test]
     public void give_empty_when_there_is_no_money_at_the_account() {
-        var NewAccount = new Account(dateProvider);
 
         string ActualOutput = "";
         string ExpectedOutput = "";
@@ -38,7 +40,6 @@ public class BankAccountShould
 
     [Test]
     public void give_50_when_depositing_50(){
-        var NewAccount = new Account(dateProvider);
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
 
@@ -64,7 +65,6 @@ public class BankAccountShould
 
     [Test]
     public void give_120_when_depositing_50_and_70(){
-        var NewAccount = new Account(dateProvider);
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
         NewAccount.deposit(70);
@@ -91,8 +91,6 @@ public class BankAccountShould
 
     [Test]
     public void give_20_when_withdrawing_50_and_balance_is_70(){
-        var NewAccount = new Account(dateProvider);
-
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(70);
         NewAccount.withdraw(50);
@@ -120,8 +118,6 @@ public class BankAccountShould
 
     [Test]
     public void be_in_negative_when_withdraw_more_money_than_the_account_has(){
-
-        var NewAccount = new Account(dateProvider);
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
         NewAccount.withdraw(70);
@@ -148,7 +144,6 @@ public class BankAccountShould
 
     [Test]
     public void order_when_the_actions_its_made_in_the_following_consecutive_days() {
-        var NewAccount = new Account(dateProvider);
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
 
@@ -177,9 +172,6 @@ public class BankAccountShould
 
     [Test]
     public void order_when_the_actions_its_made_in_different_days() {
-        var NewAccount = new Account(dateProvider);
-
-
         dateProvider.Date = new DateTime(2025, 2, 25);
         NewAccount.deposit(50);
 
@@ -212,8 +204,6 @@ public class BankAccountShould
 
     [Test]
     public void aceptance_test() {
-        var NewAccount = new Account(dateProvider);
-
         dateProvider.Date = new DateTime(2012, 1, 10);
         NewAccount.deposit(1000);
 

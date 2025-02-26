@@ -21,7 +21,7 @@ public class Account : AccountService {
  
     public void printStatement() {
     
-        List<(Transaction,int)> StatementInformation =GetPrintStatementInformation();
+        List<(Transaction,int)> StatementInformation = GetPrintStatementInformation();
         this.printer.Print(StatementInformation);
     }
  
