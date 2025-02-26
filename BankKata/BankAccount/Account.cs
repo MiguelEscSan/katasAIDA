@@ -14,18 +14,8 @@ public class Account : AccountService {
         BankStatement.Add(new Transaction(dateProvider.Date, amount));
     }
  
- 
     public void withdraw(int amount) {
-        if(CalculateBalance() < amount) return;
         BankStatement.Add(new Transaction(dateProvider.Date, -amount));
-    }
-
-    private int CalculateBalance() {
-        int Balance = 0;
-        foreach(Transaction transaction in BankStatement) {
-            Balance += transaction.Amount;
-        }
-        return Balance;
     }
  
     public void printStatement() {

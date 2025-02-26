@@ -117,35 +117,9 @@ public class BankAccountShould
         Console.SetOut(Console.Out);
     }
 
-    [Test]
-    public void not_allow_to_withdraw_from_an_empty_account(){
-
-        var NewAccount = new Account(dateProvider);
-
-        dateProvider.Date = new DateTime(2025, 2, 26);
-
-        NewAccount.withdraw(50);
-
-        string ActualOutput = "";
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            ExpectedOutput = stringWriter.ToString();     
-        }
-
-        ActualOutput.ShouldBe(ExpectedOutput);
-
-        Console.SetOut(Console.Out);
-    }
 
     [Test]
-    public void not_allow_to_withdraw_when_the_account_doesnt_have_enough_momey(){
+    public void be_in_negative_when_withdraw_more_money_than_the_account_has(){
 
         var NewAccount = new Account(dateProvider);
         dateProvider.Date = new DateTime(2025, 2, 26);
@@ -162,6 +136,7 @@ public class BankAccountShould
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
+            System.Console.WriteLine("26/02/2025 || -70 || -20");
             System.Console.WriteLine("26/02/2025 || 50 || 50");
             ExpectedOutput = stringWriter.ToString();     
         }
@@ -203,6 +178,8 @@ public class BankAccountShould
     [Test]
     public void order_when_the_actions_its_made_in_different_days() {
         var NewAccount = new Account(dateProvider);
+
+
         dateProvider.Date = new DateTime(2025, 2, 25);
         NewAccount.deposit(50);
 
@@ -225,6 +202,40 @@ public class BankAccountShould
             System.Console.WriteLine("27/02/2025 || 70 || 100");
             System.Console.WriteLine("26/02/2025 || -20 || 30");
             System.Console.WriteLine("25/02/2025 || 50 || 50");
+            ExpectedOutput = stringWriter.ToString();     
+        }
+
+        ActualOutput.ShouldBe(ExpectedOutput);
+
+        Console.SetOut(Console.Out);
+    }
+
+    [Test]
+    public void aceptance_test() {
+        var NewAccount = new Account(dateProvider);
+
+        dateProvider.Date = new DateTime(2012, 1, 10);
+        NewAccount.deposit(1000);
+
+        dateProvider.Date = new DateTime(2012, 1, 13);
+        NewAccount.deposit(2000);
+
+        dateProvider.Date = new DateTime(2012, 1, 14);
+        NewAccount.withdraw(500);
+
+        string ActualOutput = "";
+        string ExpectedOutput = "";
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            NewAccount.printStatement();
+            ActualOutput = stringWriter.ToString();
+        }
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            System.Console.WriteLine("Date || Amount || Balance");
+            System.Console.WriteLine("14/01/2012 || -500 || 2500");
+            System.Console.WriteLine("13/01/2012 || 2000 || 3000");
+            System.Console.WriteLine("10/01/2012 || 1000 || 1000");
             ExpectedOutput = stringWriter.ToString();     
         }
 
