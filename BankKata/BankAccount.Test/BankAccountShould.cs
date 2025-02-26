@@ -105,14 +105,7 @@ public class BankAccountShould
         NewAccount.withdraw(70);
 
         string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("26/02/2025 || -70 || -20");
-            System.Console.WriteLine("26/02/2025 || 50 || 50");
-            ExpectedOutput = stringWriter.ToString();     
-        }
+        string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || -70 || -20\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
 
