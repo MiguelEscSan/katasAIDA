@@ -2,20 +2,22 @@ namespace BankAccount;
  
 public class Account : AccountService {
  
-    public List<Transaction> BankStatement;
+    private List<Transaction> BankStatement;
+    private DateProvider dateProvider;
  
-    public Account() {
+    public Account(DateProvider dateProvider) {
         BankStatement = new List<Transaction>();
+        this.dateProvider = dateProvider;
     }
  
     public void deposit(int amount) {
-        BankStatement.Add(new Transaction(amount));
+        BankStatement.Add(new Transaction(dateProvider.Date, amount));
     }
  
  
     public void withdraw(int amount) {
         if(CalculateBalance() < amount) return;
-        BankStatement.Add(new Transaction(-amount));
+        BankStatement.Add(new Transaction(dateProvider.Date, -amount));
     }
 
     private int CalculateBalance() {

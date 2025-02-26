@@ -5,8 +5,8 @@ public class Transaction {
     DateTime Date { get; }
     public int Amount { get; }
 
-    public Transaction(int Amount) {
-        this.Date = DateTime.Now;
+    public Transaction(DateTime Date, int Amount) {
+        this.Date = Date;
         this.Amount = Amount;
     }
 
