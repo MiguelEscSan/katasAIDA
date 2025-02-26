@@ -30,6 +30,10 @@ public class Account : AccountService {
     private List<(Transaction,int)> GetPrintStatementInformation() {
         
         var SortedTransactions = orderByDateTime();
+        return GetTransactionsWithBalances(SortedTransactions);
+    }
+
+    private List<(Transaction,int)> GetTransactionsWithBalances( List<Transaction> SortedTransactions){
 
         List<(Transaction,int)> StatementInformation = new List<(Transaction,int)>();
         int CurrentBalance= 0;
