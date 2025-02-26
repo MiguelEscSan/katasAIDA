@@ -4,10 +4,11 @@ public class Account : AccountService {
  
     private List<Transaction> Transactions;
     private DateProvider dateProvider;
- 
+    private Printer printer;
     public Account(DateProvider dateProvider) {
-        Transactions = new List<Transaction>();
+        this.Transactions = new List<Transaction>();
         this.dateProvider = dateProvider;
+        this.printer = new ConsolePrinter();
     }
  
     public void deposit(int amount) {
@@ -19,13 +20,9 @@ public class Account : AccountService {
     }
  
     public void printStatement() {
-        
+    
         List<(Transaction,int)> StatementInformation =GetPrintStatementInformation();
-
-        System.Console.WriteLine("Date || Amount || Balance");
-        for(int transaction = StatementInformation.Count - 1; transaction >= 0; transaction--) {
-            System.Console.WriteLine($"{StatementInformation[transaction].Item1.ToString()} || {StatementInformation[transaction].Item2}");
-        }
+        this.printer.Print(StatementInformation);
     }
  
     private List<(Transaction,int)> GetPrintStatementInformation() {
