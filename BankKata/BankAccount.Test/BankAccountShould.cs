@@ -28,9 +28,8 @@ public class BankAccountShould
 
     [Test]
     public void give_empty_when_there_is_no_money_at_the_account() {
-
-        string ExpectedOutput = "";
         string ActualOutput = PrintActualOutput();
+        string ExpectedOutput = "";
 
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);

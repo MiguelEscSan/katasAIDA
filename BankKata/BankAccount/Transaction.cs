@@ -9,12 +9,4 @@ public class Transaction {
         this.Date = Date;
         this.Amount = Amount;
     }
-
-    public override string ToString() {
-        return $"{FormatDate()} || {this.Amount}";
-    }
-
-    public string FormatDate() {
-        return this.Date.ToString("dd/MM/yyyy");
-    }
 }
