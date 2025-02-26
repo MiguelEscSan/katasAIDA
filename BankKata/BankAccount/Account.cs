@@ -20,27 +20,30 @@ public class Account : AccountService {
  
     public void printStatement() {
         
-        List<int> CurrentBalances = CalculateCurrentBalances();
+        List<(Transaction,int)> StatementInformation =GetPrintStatementInformation();
 
         System.Console.WriteLine("Date || Amount || Balance");
-        for(int i = Transactions.Count - 1; i >= 0; i--) {
-            System.Console.WriteLine($"{Transactions[i].ToString()} || {CurrentBalances[i]}");
+        for(int transaction = StatementInformation.Count - 1; transaction >= 0; transaction--) {
+            System.Console.WriteLine($"{StatementInformation[transaction].Item1.ToString()} || {StatementInformation[transaction].Item2}");
         }
     }
  
-    private List<int> CalculateCurrentBalances() {
-        orderByDateTime();
+    private List<(Transaction,int)> GetPrintStatementInformation() {
+        
+        var SortedTransactions = orderByDateTime();
 
-        List<int> Balances = new List<int>();
-        int amount = 0;
-        foreach (Transaction transaction in Transactions) {
-            amount += transaction.Amount;
-            Balances.Add(amount);
+        List<(Transaction,int)> StatementInformation = new List<(Transaction,int)>();
+        int CurrentBalance= 0;
+        foreach (Transaction transaction in SortedTransactions) {
+            CurrentBalance += transaction.Amount;
+            StatementInformation.Add((transaction, CurrentBalance));
         }
-        return Balances;
+        return StatementInformation;
     }
 
-    private void orderByDateTime() {
-        Transactions.Sort((x, y) => x.Date.CompareTo(y.Date));
+    private List<Transaction> orderByDateTime() {
+        var SortedTransactions = new List<Transaction>(Transactions);
+        SortedTransactions.Sort((x, y) => x.Date.CompareTo(y.Date));
+        return SortedTransactions;
     }
 }
