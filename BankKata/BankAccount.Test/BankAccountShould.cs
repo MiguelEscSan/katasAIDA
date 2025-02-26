@@ -16,18 +16,22 @@ public class BankAccountShould
         NewAccount = new Account(dateProvider);
     }
 
-    [Test]
-    public void give_empty_when_there_is_no_money_at_the_account() {
-
+    private string PrintActualOutput() {
         string ActualOutput = "";
-        string ExpectedOutput = "";
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-
-            
+            ActualOutput = stringWriter.ToString(); 
         }
+        return ActualOutput;
+    }
+
+    [Test]
+    public void give_empty_when_there_is_no_money_at_the_account() {
+
+        string ExpectedOutput = "";
+        string ActualOutput = PrintActualOutput();
+
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -35,7 +39,6 @@ public class BankAccountShould
         }
 
         ActualOutput.ShouldBe(ExpectedOutput);
-        Console.SetOut(Console.Out);
     }
 
     [Test]
@@ -43,13 +46,8 @@ public class BankAccountShould
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -58,8 +56,6 @@ public class BankAccountShould
         }
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
-        Console.SetOut(Console.Out);
     }
 
 
@@ -69,13 +65,8 @@ public class BankAccountShould
         NewAccount.deposit(50);
         NewAccount.deposit(70);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();     
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -85,8 +76,6 @@ public class BankAccountShould
         }
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
-        Console.SetOut(Console.Out);
     }
 
     [Test]
@@ -95,13 +84,8 @@ public class BankAccountShould
         NewAccount.deposit(70);
         NewAccount.withdraw(50);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -111,8 +95,6 @@ public class BankAccountShould
         }
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
-        Console.SetOut(Console.Out);
     }
 
 
@@ -122,13 +104,8 @@ public class BankAccountShould
         NewAccount.deposit(50);
         NewAccount.withdraw(70);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -139,7 +116,6 @@ public class BankAccountShould
 
         ActualOutput.ShouldBe(ExpectedOutput);
 
-        Console.SetOut(Console.Out);
     }
 
     [Test]
@@ -150,13 +126,8 @@ public class BankAccountShould
         dateProvider.Date = new DateTime(2025, 2, 27);
         NewAccount.withdraw(20);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -166,8 +137,6 @@ public class BankAccountShould
         }
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
-        Console.SetOut(Console.Out);
     }
 
     [Test]
@@ -181,13 +150,8 @@ public class BankAccountShould
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.withdraw(20);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -198,8 +162,6 @@ public class BankAccountShould
         }
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
-        Console.SetOut(Console.Out);
     }
 
     [Test]
@@ -213,13 +175,8 @@ public class BankAccountShould
         dateProvider.Date = new DateTime(2012, 1, 14);
         NewAccount.withdraw(500);
 
-        string ActualOutput = "";
+        string ActualOutput = PrintActualOutput();
         string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString();
-        }
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
@@ -231,7 +188,6 @@ public class BankAccountShould
 
         ActualOutput.ShouldBe(ExpectedOutput);
 
-        Console.SetOut(Console.Out);
     }
 
     
