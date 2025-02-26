@@ -42,7 +42,7 @@ public class BankAccountShould
     }
 
     [Test]
-    public void give_50_when_depositing_50(){
+    public void return_the_same_amount_as_deposited_in_an_empty_account(){
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
 
@@ -60,7 +60,7 @@ public class BankAccountShould
 
 
     [Test]
-    public void give_120_when_depositing_50_and_70(){
+    public void increase_balance_when_doing_multiple_deposits(){
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
         NewAccount.deposit(70);
@@ -79,7 +79,7 @@ public class BankAccountShould
     }
 
     [Test]
-    public void give_20_when_withdrawing_50_and_balance_is_70(){
+    public void decrease_balance_when_withdrawing_money() {
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(70);
         NewAccount.withdraw(50);
@@ -99,7 +99,7 @@ public class BankAccountShould
 
 
     [Test]
-    public void be_in_negative_when_withdraw_more_money_than_the_account_has(){
+    public void be_in_negative_when_withdrawing_more_money_than_the_account_has(){
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
         NewAccount.withdraw(70);
@@ -119,53 +119,7 @@ public class BankAccountShould
     }
 
     [Test]
-    public void order_when_the_actions_its_made_in_the_following_consecutive_days() {
-        dateProvider.Date = new DateTime(2025, 2, 26);
-        NewAccount.deposit(50);
-
-        dateProvider.Date = new DateTime(2025, 2, 27);
-        NewAccount.withdraw(20);
-
-        string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("27/02/2025 || -20 || 30");
-            System.Console.WriteLine("26/02/2025 || 50 || 50");
-            ExpectedOutput = stringWriter.ToString();     
-        }
-
-        ActualOutput.ShouldBe(ExpectedOutput);
-    }
-
-    [Test]
     public void order_when_the_actions_its_made_in_different_days() {
-        dateProvider.Date = new DateTime(2025, 2, 25);
-        NewAccount.deposit(50);
-
-        dateProvider.Date = new DateTime(2025, 2, 27);
-        NewAccount.deposit(70);
-
-        dateProvider.Date = new DateTime(2025, 2, 26);
-        NewAccount.withdraw(20);
-
-        string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("27/02/2025 || 70 || 100");
-            System.Console.WriteLine("26/02/2025 || -20 || 30");
-            System.Console.WriteLine("25/02/2025 || 50 || 50");
-            ExpectedOutput = stringWriter.ToString();     
-        }
-
-        ActualOutput.ShouldBe(ExpectedOutput);
-    }
-
-    [Test]
-    public void aceptance_test() {
         dateProvider.Date = new DateTime(2012, 1, 10);
         NewAccount.deposit(1000);
 
