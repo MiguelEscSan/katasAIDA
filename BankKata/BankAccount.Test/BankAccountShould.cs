@@ -85,4 +85,31 @@ public class BankAccountShould
         Console.SetOut(Console.Out);
     }
 
+    [Test]
+    public void give_20_when_withdrawing_50_and_balance_is_70(){
+        var NewAccount = new Account();
+        NewAccount.deposit(70);
+        NewAccount.withdraw(50);
+
+        string ActualOutput = "";
+        string ExpectedOutput = "";
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            NewAccount.printStatement();
+            ActualOutput = stringWriter.ToString();
+        }
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            System.Console.WriteLine("Date || Amount || Balance");
+            System.Console.WriteLine("25/02/2025 || -50 || 20");
+            System.Console.WriteLine("25/02/2025 || 70 || 70");
+            ExpectedOutput = stringWriter.ToString();     
+        }
+
+        ActualOutput.ShouldBe(ExpectedOutput);
+
+        Console.SetOut(Console.Out);
+    }
+    
+
 }
