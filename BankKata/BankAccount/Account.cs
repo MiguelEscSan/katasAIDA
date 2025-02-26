@@ -2,37 +2,38 @@ namespace BankAccount;
  
 public class Account : AccountService {
  
-    private List<Transaction> BankStatement;
+    private List<Transaction> Transactions;
     private DateProvider dateProvider;
  
     public Account(DateProvider dateProvider) {
-        BankStatement = new List<Transaction>();
+        Transactions = new List<Transaction>();
         this.dateProvider = dateProvider;
     }
  
     public void deposit(int amount) {
-        BankStatement.Add(new Transaction(dateProvider.Date, amount));
+        Transactions.Add(new Transaction(dateProvider.Date, amount));
     }
  
     public void withdraw(int amount) {
-        BankStatement.Add(new Transaction(dateProvider.Date, -amount));
+        Transactions.Add(new Transaction(dateProvider.Date, -amount));
     }
  
     public void printStatement() {
-        System.Console.WriteLine("Date || Amount || Balance");
- 
-        orderByDateTime();
+        
         List<int> CurrentBalances = CalculateCurrentBalances();
- 
-        for(int i = BankStatement.Count - 1; i >= 0; i--) {
-            System.Console.WriteLine($"{BankStatement[i].ToString()} || {CurrentBalances[i]}");
+
+        System.Console.WriteLine("Date || Amount || Balance");
+        for(int i = Transactions.Count - 1; i >= 0; i--) {
+            System.Console.WriteLine($"{Transactions[i].ToString()} || {CurrentBalances[i]}");
         }
     }
  
     private List<int> CalculateCurrentBalances() {
+        orderByDateTime();
+
         List<int> Balances = new List<int>();
         int amount = 0;
-        foreach (Transaction transaction in BankStatement) {
+        foreach (Transaction transaction in Transactions) {
             amount += transaction.Amount;
             Balances.Add(amount);
         }
@@ -40,6 +41,6 @@ public class Account : AccountService {
     }
 
     private void orderByDateTime() {
-        BankStatement.Sort((x, y) => x.Date.CompareTo(y.Date));
+        Transactions.Sort((x, y) => x.Date.CompareTo(y.Date));
     }
 }
