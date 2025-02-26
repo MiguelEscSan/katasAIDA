@@ -31,7 +31,7 @@ public class Account : AccountService {
         return GetTransactionsWithBalances(SortedTransactions);
     }
 
-    public List<(Transaction,int)> GetTransactionsWithBalances( List<Transaction> SortedTransactions){
+    private List<(Transaction,int)> GetTransactionsWithBalances( List<Transaction> SortedTransactions){
 
         List<(Transaction,int)> StatementInformation = new List<(Transaction,int)>();
         int CurrentBalance= 0;
