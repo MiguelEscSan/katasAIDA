@@ -172,11 +172,13 @@ public class BankAccountShould
     }
 
     [Test]
-    public void order_when_the_actions_its_made_in_different_days() {
+    public void order_when_the_actions_its_made_in_the_following_consecutive_days() {
         var NewAccount = new Account(dateProvider);
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
-        NewAccount.withdraw(70);
+
+        dateProvider.Date = new DateTime(2025, 2, 27);
+        NewAccount.withdraw(20);
 
         string ActualOutput = "";
         string ExpectedOutput = "";
@@ -188,6 +190,7 @@ public class BankAccountShould
         using(StringWriter stringWriter = new StringWriter()) {
             Console.SetOut(stringWriter);
             System.Console.WriteLine("Date || Amount || Balance");
+            System.Console.WriteLine("27/02/2025 || -20 || 30");
             System.Console.WriteLine("26/02/2025 || 50 || 50");
             ExpectedOutput = stringWriter.ToString();     
         }
@@ -196,6 +199,39 @@ public class BankAccountShould
 
         Console.SetOut(Console.Out);
     }
-    
+
+    [Test]
+    public void order_when_the_actions_its_made_in_different_days() {
+        var NewAccount = new Account(dateProvider);
+        dateProvider.Date = new DateTime(2025, 2, 25);
+        NewAccount.deposit(50);
+
+        dateProvider.Date = new DateTime(2025, 2, 27);
+        NewAccount.deposit(70);
+
+        dateProvider.Date = new DateTime(2025, 2, 26);
+        NewAccount.withdraw(20);
+
+        string ActualOutput = "";
+        string ExpectedOutput = "";
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            NewAccount.printStatement();
+            ActualOutput = stringWriter.ToString();
+        }
+        using(StringWriter stringWriter = new StringWriter()) {
+            Console.SetOut(stringWriter);
+            System.Console.WriteLine("Date || Amount || Balance");
+            System.Console.WriteLine("27/02/2025 || 70 || 100");
+            System.Console.WriteLine("26/02/2025 || -20 || 30");
+            System.Console.WriteLine("25/02/2025 || 50 || 50");
+            ExpectedOutput = stringWriter.ToString();     
+        }
+
+        ActualOutput.ShouldBe(ExpectedOutput);
+
+        Console.SetOut(Console.Out);
+    }
+
 
 }

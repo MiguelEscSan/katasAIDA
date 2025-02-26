@@ -31,6 +31,7 @@ public class Account : AccountService {
     public void printStatement() {
         System.Console.WriteLine("Date || Amount || Balance");
  
+        orderByDateTime();
         List<int> CurrentBalances = CalculateCurrentBalances();
  
         for(int i = BankStatement.Count - 1; i >= 0; i--) {
@@ -46,5 +47,9 @@ public class Account : AccountService {
             Balances.Add(amount);
         }
         return Balances;
+    }
+
+    private void orderByDateTime() {
+        BankStatement.Sort((x, y) => x.Date.CompareTo(y.Date));
     }
 }

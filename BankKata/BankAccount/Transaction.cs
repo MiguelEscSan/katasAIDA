@@ -2,7 +2,7 @@ namespace BankAccount;
 
 public class Transaction {
 
-    DateTime Date { get; }
+    public DateTime Date { get; }
     public int Amount { get; }
 
     public Transaction(DateTime Date, int Amount) {
