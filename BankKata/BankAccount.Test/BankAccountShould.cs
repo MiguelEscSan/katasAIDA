@@ -110,6 +110,30 @@ public class BankAccountShould
 
         Console.SetOut(Console.Out);
     }
+
+    [Test]
+    public void not_allow_to_withdraw_from_an_empty_account(){
+
+        var NewAccount = new Account();
+            NewAccount.withdraw(50);
+
+            string ActualOutput = "";
+            string ExpectedOutput = "";
+            using(StringWriter stringWriter = new StringWriter()) {
+                Console.SetOut(stringWriter);
+                NewAccount.printStatement();
+                ActualOutput = stringWriter.ToString();
+            }
+            using(StringWriter stringWriter = new StringWriter()) {
+                Console.SetOut(stringWriter);
+                System.Console.WriteLine("Date || Amount || Balance");
+                ExpectedOutput = stringWriter.ToString();     
+            }
+
+            ActualOutput.ShouldBe(ExpectedOutput);
+
+            Console.SetOut(Console.Out);
+    }
     
 
 }

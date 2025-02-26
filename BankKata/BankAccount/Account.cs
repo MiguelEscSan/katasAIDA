@@ -14,6 +14,7 @@ public class Account : AccountService {
  
  
     public void withdraw(int amount) {
+        if(BankStatement.Count == 0) return;
         BankStatement.Add(new Transaction(-amount));
     }
  
