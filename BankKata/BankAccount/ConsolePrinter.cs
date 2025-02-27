@@ -2,10 +2,10 @@ namespace BankAccount;
 
 public class ConsolePrinter: Printer{
 
-    public void Print(List<(Transaction,int)> StatementInformation){
+    public void Print(List<StatementRow> StatementInformation){
         System.Console.WriteLine("Date || Amount || Balance");
         for(int transaction = StatementInformation.Count - 1; transaction >= 0; transaction--) {
-            System.Console.WriteLine($"{FormatTransaction(StatementInformation[transaction].Item1)} || {StatementInformation[transaction].Item2}");
+            System.Console.WriteLine($"{FormatTransaction(StatementInformation[transaction].transaction)} || {StatementInformation[transaction].CurrentBalance}");
         }
     }
 

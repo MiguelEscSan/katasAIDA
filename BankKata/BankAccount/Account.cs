@@ -21,23 +21,21 @@ public class Account : AccountService {
     }
  
     public void printStatement() {
-    
-        List<(Transaction,int)> StatementInformation = GetPrintStatementInformation();
+        List<StatementRow> StatementInformation = GetPrintStatementInformation();
         this.printer.Print(StatementInformation);
     }
- 
-    private List<(Transaction,int)> GetPrintStatementInformation() {
+
+    private List<StatementRow> GetPrintStatementInformation() {
         var SortedTransactions = this.transactionRepository.orderByDateTime();
         return GetTransactionsWithBalances(SortedTransactions);
     }
 
-    private List<(Transaction,int)> GetTransactionsWithBalances( List<Transaction> SortedTransactions){
-
-        List<(Transaction,int)> StatementInformation = new List<(Transaction,int)>();
+    private List<StatementRow> GetTransactionsWithBalances( List<Transaction> SortedTransactions){
+        List<StatementRow> StatementInformation = new List<StatementRow>();
         int CurrentBalance= 0;
         foreach (Transaction transaction in SortedTransactions) {
             CurrentBalance += transaction.Amount;
-            StatementInformation.Add((transaction, CurrentBalance));
+            StatementInformation.Add(new StatementRow(transaction, CurrentBalance));
         }
         return StatementInformation;
     }
