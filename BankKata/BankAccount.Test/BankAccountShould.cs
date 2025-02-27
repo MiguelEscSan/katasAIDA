@@ -8,7 +8,7 @@ public class BankAccountShould
 {
     DateProvider dateProvider;
     Account NewAccount;
-    Printer printer;
+    ConsolePrinter printer;
     TransactionRepository transactionRepository;
 
     [SetUp]
@@ -20,19 +20,11 @@ public class BankAccountShould
         NewAccount = new Account(dateProvider, printer, transactionRepository);
     }
 
-    private string PrintActualOutput() {
-        string ActualOutput = "";
-        StringWriter stringWriter = new StringWriter();
-        Console.SetOut(stringWriter);
-        NewAccount.printStatement();
-        ActualOutput = stringWriter.ToString(); 
-        stringWriter.Dispose();
-        return ActualOutput; 
-    }
-
     [Test]
     public void give_empty_when_there_is_no_money_at_the_account() {
-        string ActualOutput = PrintActualOutput();
+        NewAccount.printStatement();
+
+        string ActualOutput = printer.GetPrintedContent();
         string ExpectedOutput = "Date || Amount || Balance\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
@@ -43,7 +35,9 @@ public class BankAccountShould
         dateProvider.Date = new DateTime(2025, 2, 26);
         NewAccount.deposit(50);
 
-        string ActualOutput = PrintActualOutput();
+        NewAccount.printStatement();
+
+        string ActualOutput = printer.GetPrintedContent();
         string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
@@ -55,7 +49,9 @@ public class BankAccountShould
         NewAccount.deposit(50);
         NewAccount.deposit(70);
 
-        string ActualOutput = PrintActualOutput();     
+        NewAccount.printStatement();
+
+        string ActualOutput = printer.GetPrintedContent();    
         string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || 70 || 120\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
@@ -67,7 +63,9 @@ public class BankAccountShould
         NewAccount.deposit(70);
         NewAccount.withdraw(50);
 
-        string ActualOutput = PrintActualOutput();
+        NewAccount.printStatement();
+
+        string ActualOutput = printer.GetPrintedContent();
         string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || -50 || 20\r\n26/02/2025 || 70 || 70\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
@@ -79,7 +77,9 @@ public class BankAccountShould
         NewAccount.deposit(50);
         NewAccount.withdraw(70);
 
-        string ActualOutput = PrintActualOutput();
+        NewAccount.printStatement();
+
+        string ActualOutput = printer.GetPrintedContent();
         string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || -70 || -20\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
@@ -96,7 +96,9 @@ public class BankAccountShould
         dateProvider.Date = new DateTime(2012, 1, 14);
         NewAccount.withdraw(500);
 
-        string ActualOutput = PrintActualOutput();
+        NewAccount.printStatement();
+
+        string ActualOutput = printer.GetPrintedContent();
         string ExpectedOutput = "Date || Amount || Balance\r\n14/01/2012 || -500 || 2500\r\n13/01/2012 || 2000 || 3000\r\n10/01/2012 || 1000 || 1000\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
