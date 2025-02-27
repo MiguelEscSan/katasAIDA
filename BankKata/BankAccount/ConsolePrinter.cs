@@ -9,10 +9,10 @@ public class ConsolePrinter: Printer{
         }
     }
 
-    public string FormatTransaction(Transaction transaction) {
+    private string FormatTransaction(Transaction transaction) {
         return $"{FormatDate(transaction.Date)} || {transaction.Amount}";
     }
-    public string FormatDate(DateTime Date) {
+    private string FormatDate(DateTime Date) {
         return Date.ToString("dd/MM/yyyy");
     }
 }
