@@ -3,22 +3,25 @@ namespace BankAccount;
 public class Account : AccountService {
  
     // private List<Transaction> Transactions;
+    // private DateProvider dateProvider;
     private TransactionService transactionService;
-    private DateProvider dateProvider;
+
     private Printer printer;
     public Account(DateProvider dateProvider) {
         // this.Transactions = new List<Transaction>();
-        this.transactionService = new TransactionService();
-        this.dateProvider = dateProvider;
+        // this.dateProvider = dateProvider;
         this.printer = new ConsolePrinter();
+        this.transactionService = new TransactionService(dateProvider);
     }
  
     public void deposit(int amount) {
-        this.transactionService.AddTransaction(dateProvider.Date, amount);
+        // this.transactionService.AddTransaction(dateProvider.Date, amount);
+        this.transactionService.Save(amount);
     }
  
     public void withdraw(int amount) {
-        this.transactionService.AddTransaction(dateProvider.Date, -amount);
+        // this.transactionService.AddTransaction(dateProvider.Date, -amount);
+        this.transactionService.Save(-amount);
     }
  
     public void printStatement() {
@@ -28,8 +31,7 @@ public class Account : AccountService {
     }
  
     private List<(Transaction,int)> GetPrintStatementInformation() {
-        
-        var SortedTransactions = orderByDateTime();
+        var SortedTransactions = this.transactionService.orderByDateTime();
         return GetTransactionsWithBalances(SortedTransactions);
     }
 
@@ -42,11 +44,5 @@ public class Account : AccountService {
             StatementInformation.Add((transaction, CurrentBalance));
         }
         return StatementInformation;
-    }
-
-    private List<Transaction> orderByDateTime() {
-        var SortedTransactions = new List<Transaction>(this.transactionService.Transactions);
-        SortedTransactions.Sort((x, y) => x.Date.CompareTo(y.Date));
-        return SortedTransactions;
     }
 }
