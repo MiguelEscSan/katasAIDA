@@ -18,24 +18,18 @@ public class BankAccountShould
 
     private string PrintActualOutput() {
         string ActualOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            NewAccount.printStatement();
-            ActualOutput = stringWriter.ToString(); 
-        }
-        return ActualOutput;
+        StringWriter stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+        NewAccount.printStatement();
+        ActualOutput = stringWriter.ToString(); 
+        stringWriter.Dispose();
+        return ActualOutput; 
     }
 
     [Test]
     public void give_empty_when_there_is_no_money_at_the_account() {
         string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            ExpectedOutput = stringWriter.ToString();     
-        }
+        string ExpectedOutput = "Date || Amount || Balance\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
     }
@@ -46,17 +40,10 @@ public class BankAccountShould
         NewAccount.deposit(50);
 
         string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("26/02/2025 || 50 || 50");
-            ExpectedOutput = stringWriter.ToString();     
-        }
+        string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
     }
-
 
     [Test]
     public void increase_balance_when_doing_multiple_deposits(){
@@ -65,14 +52,7 @@ public class BankAccountShould
         NewAccount.deposit(70);
 
         string ActualOutput = PrintActualOutput();     
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("26/02/2025 || 70 || 120");
-            System.Console.WriteLine("26/02/2025 || 50 || 50");
-            ExpectedOutput = stringWriter.ToString();     
-        }
+        string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || 70 || 120\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
     }
@@ -84,18 +64,10 @@ public class BankAccountShould
         NewAccount.withdraw(50);
 
         string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("26/02/2025 || -50 || 20");
-            System.Console.WriteLine("26/02/2025 || 70 || 70");
-            ExpectedOutput = stringWriter.ToString();     
-        }
+        string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || -50 || 20\r\n26/02/2025 || 70 || 70\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
     }
-
 
     [Test]
     public void be_in_negative_when_withdrawing_more_money_than_the_account_has(){
@@ -107,7 +79,6 @@ public class BankAccountShould
         string ExpectedOutput = "Date || Amount || Balance\r\n26/02/2025 || -70 || -20\r\n26/02/2025 || 50 || 50\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
     }
 
     [Test]
@@ -122,21 +93,8 @@ public class BankAccountShould
         NewAccount.withdraw(500);
 
         string ActualOutput = PrintActualOutput();
-        string ExpectedOutput = "";
-        using(StringWriter stringWriter = new StringWriter()) {
-            Console.SetOut(stringWriter);
-            System.Console.WriteLine("Date || Amount || Balance");
-            System.Console.WriteLine("14/01/2012 || -500 || 2500");
-            System.Console.WriteLine("13/01/2012 || 2000 || 3000");
-            System.Console.WriteLine("10/01/2012 || 1000 || 1000");
-            ExpectedOutput = stringWriter.ToString();     
-        }
+        string ExpectedOutput = "Date || Amount || Balance\r\n14/01/2012 || -500 || 2500\r\n13/01/2012 || 2000 || 3000\r\n10/01/2012 || 1000 || 1000\r\n";
 
         ActualOutput.ShouldBe(ExpectedOutput);
-
     }
-
-    
-
-
 }
