@@ -4,8 +4,8 @@ public class ConsolePrinter: Printer{
 
     public void Print(List<StatementRow> StatementInformation){
         System.Console.WriteLine("Date || Amount || Balance");
-        for(int transaction = StatementInformation.Count - 1; transaction >= 0; transaction--) {
-            System.Console.WriteLine($"{FormatTransaction(StatementInformation[transaction].transaction)} || {StatementInformation[transaction].CurrentBalance}");
+        for(int index = StatementInformation.Count - 1; index >= 0; index--) {
+            System.Console.WriteLine($"{FormatTransaction(StatementInformation[index].transaction)} || {StatementInformation[index].CurrentBalance}");
         }
     }
 
