@@ -2,26 +2,22 @@ namespace BankAccount;
  
 public class Account : AccountService {
  
-    // private List<Transaction> Transactions;
-    // private DateProvider dateProvider;
-    private TransactionService transactionService;
+    private DateProvider dateProvider;
+    private TransactionRepository transactionRepository;
 
     private Printer printer;
-    public Account(TransactionService transactionService) {
-        // this.Transactions = new List<Transaction>();
-        // this.dateProvider = dateProvider;
-        this.printer = new ConsolePrinter();
-        this.transactionService = transactionService;
+    public Account(DateProvider dateProvider, Printer printer, TransactionRepository transactionRepository) {
+        this.dateProvider = dateProvider;
+        this.printer = printer;
+        this.transactionRepository = transactionRepository;
     }
  
     public void deposit(int amount) {
-        // this.transactionService.AddTransaction(dateProvider.Date, amount);
-        this.transactionService.Save(amount);
+        this.transactionRepository.Save(new Transaction(dateProvider.Date, amount));
     }
  
     public void withdraw(int amount) {
-        // this.transactionService.AddTransaction(dateProvider.Date, -amount);
-        this.transactionService.Save(-amount);
+        this.transactionRepository.Save(new Transaction(dateProvider.Date, -amount));
     }
  
     public void printStatement() {
@@ -31,7 +27,7 @@ public class Account : AccountService {
     }
  
     private List<(Transaction,int)> GetPrintStatementInformation() {
-        var SortedTransactions = this.transactionService.orderByDateTime();
+        var SortedTransactions = this.transactionRepository.orderByDateTime();
         return GetTransactionsWithBalances(SortedTransactions);
     }
 

@@ -8,14 +8,16 @@ public class BankAccountShould
 {
     DateProvider dateProvider;
     Account NewAccount;
-    TransactionService TransactionService;
+    Printer printer;
+    TransactionRepository transactionRepository;
 
     [SetUp]
     public void Setup()
     {
         dateProvider = new DateProvider();
-        TransactionService = new TransactionService(dateProvider);
-        NewAccount = new Account(TransactionService);
+        transactionRepository = new InMemoryTransactionRepository();
+        printer = new ConsolePrinter();
+        NewAccount = new Account(dateProvider, printer, transactionRepository);
     }
 
     private string PrintActualOutput() {
