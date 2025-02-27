@@ -8,12 +8,14 @@ public class BankAccountShould
 {
     DateProvider dateProvider;
     Account NewAccount;
+    TransactionService TransactionService;
 
     [SetUp]
     public void Setup()
     {
         dateProvider = new DateProvider();
-        NewAccount = new Account(dateProvider);
+        TransactionService = new TransactionService(dateProvider);
+        NewAccount = new Account(TransactionService);
     }
 
     private string PrintActualOutput() {

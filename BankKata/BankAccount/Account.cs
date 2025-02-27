@@ -7,11 +7,11 @@ public class Account : AccountService {
     private TransactionService transactionService;
 
     private Printer printer;
-    public Account(DateProvider dateProvider) {
+    public Account(TransactionService transactionService) {
         // this.Transactions = new List<Transaction>();
         // this.dateProvider = dateProvider;
         this.printer = new ConsolePrinter();
-        this.transactionService = new TransactionService(dateProvider);
+        this.transactionService = transactionService;
     }
  
     public void deposit(int amount) {
