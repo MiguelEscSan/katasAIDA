@@ -30,14 +30,15 @@ public class Account : AccountService {
         return GetTransactionsWithBalances(SortedTransactions);
     }
 
-    private List<StatementRow> GetTransactionsWithBalances( List<Transaction> SortedTransactions){
-        List<StatementRow> StatementInformation = new List<StatementRow>();
-        int CurrentBalance= 0;
-        foreach (Transaction transaction in SortedTransactions) {
-            CurrentBalance += transaction.Amount;
-            StatementInformation.Add(new StatementRow(transaction, CurrentBalance));
-        }
-        return StatementInformation;
+    private List<StatementRow> GetTransactionsWithBalances( List<Transaction> SortedTransactions) {
+
+        int currentBalance = 0;     
+        return SortedTransactions
+                .Select(transaction => {  
+                    currentBalance += transaction.Amount;
+                    return new StatementRow(transaction, currentBalance); 
+                }).ToList();
+                
     }
 
 }

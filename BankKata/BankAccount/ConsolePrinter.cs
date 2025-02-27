@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+ 
 namespace BankAccount;
-
+ 
 public class ConsolePrinter: Printer{
     private StringBuilder output = new StringBuilder();
-
+ 
     public void Print(List<StatementRow> StatementInformation) {
         output.AppendLine("Date || Amount || Balance");
         for (int index = StatementInformation.Count - 1; index >= 0; index--) {
@@ -14,11 +14,11 @@ public class ConsolePrinter: Printer{
         }
         System.Console.WriteLine(GetPrintedContent());
     }
-
+ 
     public string GetPrintedContent() {
         return output.ToString();
     }
-
+ 
     private string FormatTransaction(Transaction transaction) {
         return $"{FormatDate(transaction.Date)} || {transaction.Amount}";
     }
@@ -26,3 +26,4 @@ public class ConsolePrinter: Printer{
         return Date.ToString("dd/MM/yyyy");
     }
 }
+ 
