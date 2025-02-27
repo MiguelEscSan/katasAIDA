@@ -13,6 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankKata", "BankKata", "{47
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount.Test", "BankKata\BankAccount.Test\BankAccount.Test.csproj", "{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankKataOutsideIn", "BankKataOutsideIn", "{AE5E2C96-B3A1-4800-AB5C-F562811A7D84}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountOutsideIn", "BankKataOutsideIn\BankAccountOutsideIn\BankAccountOutsideIn.csproj", "{CBAB2954-DFAE-44C3-8DFE-7FB98A2293B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountOutsideIn.Test", "BankKataOutsideIn\BankAccountOutsideIn.Test\BankAccountOutsideIn.Test.csproj", "{A5D36B0C-FB62-416F-BA57-43CB06F885C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,8 +45,18 @@ Global
 		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBAB2954-DFAE-44C3-8DFE-7FB98A2293B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBAB2954-DFAE-44C3-8DFE-7FB98A2293B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBAB2954-DFAE-44C3-8DFE-7FB98A2293B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBAB2954-DFAE-44C3-8DFE-7FB98A2293B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D36B0C-FB62-416F-BA57-43CB06F885C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D36B0C-FB62-416F-BA57-43CB06F885C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D36B0C-FB62-416F-BA57-43CB06F885C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D36B0C-FB62-416F-BA57-43CB06F885C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5F64FBC6-D7F6-4BF9-9803-F538BFB41152} = {47B5E089-8D89-453E-A025-3C3D7720BDE5}
+		{CBAB2954-DFAE-44C3-8DFE-7FB98A2293B3} = {AE5E2C96-B3A1-4800-AB5C-F562811A7D84}
+		{A5D36B0C-FB62-416F-BA57-43CB06F885C6} = {AE5E2C96-B3A1-4800-AB5C-F562811A7D84}
 	EndGlobalSection
 EndGlobal
