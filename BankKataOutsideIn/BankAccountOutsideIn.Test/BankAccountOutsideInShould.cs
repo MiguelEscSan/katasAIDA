@@ -1,5 +1,6 @@
 ﻿using Shouldly;
 using NSubstitute;
+using System.Runtime.CompilerServices;
 
 namespace BankAccountOutsideIn.Test;
 
@@ -8,13 +9,15 @@ public class BankAccountOutsideInShould
     Account account;
     TransactionRepository transactionRepository;
     DateProvider dateProvider;
+    Printer printer;
 
     [SetUp]
     public void Setup()
     {
         transactionRepository = Substitute.For<TransactionRepository>();
         dateProvider = Substitute.For<DateProvider>();
-        account =  new Account(transactionRepository, dateProvider);
+        printer =  Substitute.For<Printer>();
+        account =  new Account(transactionRepository, dateProvider, printer);
     }
 
     [Test]
@@ -104,5 +107,16 @@ public class BankAccountOutsideInShould
         transactionRepository.Received().Save(validation);
 
         account.Balance.ShouldBe(0);
+    }
+
+    [Test]
+    public void print_only_the_header_of_the_bank_statement_when_account_is_empty(){
+        
+        List<StatementRow> statementRows = new List<StatementRow>();
+        account.printStatement();
+
+        // var validation = Arg.Is<List<StatementRow>>(statementRow => statementRow == null );
+
+        printer.Received().Print(statementRows);
     }
 }
