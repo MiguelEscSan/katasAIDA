@@ -3,9 +3,10 @@ namespace BankAccountOutsideIn;
 public class Account : AccountService
 {
     public int Balance {get;set;}
-
-    public Account(){
+    private TransactionRepository transactionRepository;
+    public Account(TransactionRepository transactionRepository){
         Balance = 0;
+        this.transactionRepository = transactionRepository;
     }
     public void deposit(int amount)
     {

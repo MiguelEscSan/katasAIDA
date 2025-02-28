@@ -5,10 +5,12 @@ namespace BankAccountOutsideIn.Test;
 public class BankAccountOutsideInShould
 {
     Account account;
+    TransactionRepository transactionRepository;
     [SetUp]
     public void Setup()
     {
-        account =  new Account();
+        account =  new Account(transactionRepository);
+        
     }
 
     [Test]
@@ -55,6 +57,12 @@ public class BankAccountOutsideInShould
 
 
         account.Balance.ShouldBe(expectedBalance);
+    }
+
+    [Test]
+    public void create_new_transaction_when_depositing(){
+        account.deposit(50);
+
     }
 
 }
