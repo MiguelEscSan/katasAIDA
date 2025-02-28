@@ -1,4 +1,5 @@
 ﻿using Shouldly;
+using NSubstitute;
 
 namespace BankAccountOutsideIn.Test;
 
@@ -6,11 +7,14 @@ public class BankAccountOutsideInShould
 {
     Account account;
     TransactionRepository transactionRepository;
+    DateProvider dateProvider;
+
     [SetUp]
     public void Setup()
     {
-        account =  new Account(transactionRepository);
-        
+        transactionRepository = Substitute.For<TransactionRepository>();
+        dateProvider = Substitute.For<DateProvider>();
+        account =  new Account(transactionRepository, dateProvider);
     }
 
     [Test]
@@ -45,7 +49,6 @@ public class BankAccountOutsideInShould
         account.deposit(50);
         account.deposit(70);
 
-
         account.Balance.ShouldBe(expectedBalance);
     }
     [Test]
@@ -55,14 +58,28 @@ public class BankAccountOutsideInShould
         account.withdraw(50);
         account.withdraw(70);
 
-
         account.Balance.ShouldBe(expectedBalance);
     }
 
     [Test]
     public void create_new_transaction_when_depositing(){
-        account.deposit(50);
+        var date = new DateTime(2028, 2, 26);
 
+        dateProvider.GetDate().Returns(date);
+        account.deposit(50);
+        var validation = Arg.Is<Transaction>(item => item.Amount == 50 && item.Date == date);
+
+        transactionRepository.Received().Save(validation);
     }
 
+    [Test]
+    public void create_new_transaction_when_withdrawing(){
+        var date = new DateTime(2028, 2, 26);
+
+        dateProvider.GetDate().Returns(date);
+        account.withdraw(50);
+        var validation = Arg.Is<Transaction>(item => item.Amount == -50 && item.Date == date);
+
+        transactionRepository.Received().Save(validation);
+    }
 }
