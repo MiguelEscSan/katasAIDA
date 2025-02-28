@@ -110,13 +110,25 @@ public class BankAccountOutsideInShould
     }
 
     [Test]
-    public void print_only_the_header_of_the_bank_statement_when_account_is_empty(){
-        
-        List<StatementRow> statementRows = new List<StatementRow>();
+    public void print_an_empty_account(){
+             
+        account.printStatement();   
+
+        var validation = Arg.Is<List<StatementRow>>(row => row.Count == 0);
+        printer.Received().Print(validation);        
+    }
+
+    [Test]
+    public void print_a_non_empty_account() {
+        List<Transaction> statementRows = [ 
+            new Transaction(DateTime.Now, 10),
+            new Transaction(DateTime.Now, 1)
+        ];
+
+        transactionRepository.orderByDateTime().Returns(statementRows);
         account.printStatement();
 
-        // var validation = Arg.Is<List<StatementRow>>(statementRow => statementRow == null );
-
-        printer.Received().Print(statementRows);
+        var validation = Arg.Is<List<StatementRow>>(row => row.Count > 0);
+        printer.Received().Print(validation); 
     }
 }
