@@ -46,5 +46,15 @@ public class BankAccountOutsideInShould
 
         account.Balance.ShouldBe(expectedBalance);
     }
+    [Test]
+    public void decrease_balance_when_doing_multiple_withdraws(){
+        var expectedBalance =-120;
+
+        account.withdraw(50);
+        account.withdraw(70);
+
+
+        account.Balance.ShouldBe(expectedBalance);
+    }
 
 }
