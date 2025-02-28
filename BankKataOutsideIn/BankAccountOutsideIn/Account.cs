@@ -19,6 +19,6 @@ public class Account : AccountService
 
     public void withdraw(int amount)
     {
-        throw new NotImplementedException();
+        Balance -= amount;
     }
 }
