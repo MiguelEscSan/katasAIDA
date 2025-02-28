@@ -17,4 +17,14 @@ public class BankAccountOutsideInShould
         var expectedBalance = 0;
         account.Balance.ShouldBe(expectedBalance);
     }
+
+    [Test]
+    public void return_correct_balance_when_depositing(){
+        var expectedBalance = 50;
+        
+        account.deposit(50);
+
+        account.Balance.ShouldBe(expectedBalance);
+
+    }
 }

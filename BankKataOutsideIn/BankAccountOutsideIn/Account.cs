@@ -2,14 +2,14 @@ namespace BankAccountOutsideIn;
 
 public class Account : AccountService
 {
-    public int Balance {get;}
+    public int Balance {get;set;}
 
     public Account(){
         Balance = 0;
     }
     public void deposit(int amount)
     {
-        throw new NotImplementedException();
+        Balance += amount;
     }
 
     public void printStatement()
