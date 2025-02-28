@@ -82,4 +82,27 @@ public class BankAccountOutsideInShould
 
         transactionRepository.Received().Save(validation);
     }
+
+    [Test]
+    public void create_multiple_transactions_when_depositing_and_withdrawing(){
+        var date = new DateTime(2028, 2, 26);
+
+        dateProvider.GetDate().Returns(date);
+        account.withdraw(50);
+    
+        var validation = Arg.Is<Transaction>(item => item.Amount == -50 && item.Date == date);
+
+        transactionRepository.Received().Save(validation);
+
+        date = new DateTime(2028, 2, 27);
+
+        dateProvider.GetDate().Returns(date);
+        account.deposit(50);
+    
+        validation = Arg.Is<Transaction>(item => item.Amount == 50 && item.Date == date);
+
+        transactionRepository.Received().Save(validation);
+
+        account.Balance.ShouldBe(0);
+    }
 }
