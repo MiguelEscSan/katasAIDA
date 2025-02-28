@@ -28,11 +28,23 @@ public class BankAccountOutsideInShould
 
     }
     [Test]
-    public void return_correct_balance_when_withdrawing(){
+    public void return_negative_balance_when_withdrawing_an_empty_account(){
         var expectedBalance = -50;
 
         account.withdraw(50);
 
         account.Balance.ShouldBe(expectedBalance);
     }
+
+    [Test]
+    public void increase_balance_when_doing_multiple_deposits(){
+        var expectedBalance =120;
+
+        account.deposit(50);
+        account.deposit(70);
+
+
+        account.Balance.ShouldBe(expectedBalance);
+    }
+
 }
