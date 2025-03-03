@@ -4,10 +4,10 @@ namespace BankAccountOutsideIn;
 public class InMemoryDateProvider : DateProvider
 {
 
-     internal DateTime date;
+    internal DateTime date;
     public DateTime GetDate()
     {
-        throw new NotImplementedException();
+        return date;
     }
 
     public void SetDate(DateTime date)

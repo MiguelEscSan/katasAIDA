@@ -21,4 +21,13 @@ public class InMemoryDateProviderShould {
 
         dateProvider.date.ShouldBe(date);
     }
+
+    [Test]
+    public void get_the_date(){
+        var date =  new DateTime(2030,1,1);
+
+        dateProvider.SetDate(date);
+
+        dateProvider.GetDate().ShouldBe(date);
+    }
 }
