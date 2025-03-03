@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <!-- <ItemGroup><InternalsVisibleTo Include="InMemoryTransactionRepositoryShould" /></ItemGroup> -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="BankAccountOutsideIn.Test" />
+  </ItemGroup>
  
 </Project>

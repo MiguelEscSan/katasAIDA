@@ -22,6 +22,16 @@ public class    InMemoryTransactionRepositoryShould {
         transactionRepository.Save(transaction);
 
         transactionRepository.Transactions.ShouldBe(expectedTransactions);
-       
+    }
+
+    [Test]
+    public void return_transactions() {
+        var date = new DateTime(2028, 2, 26);
+        int amount = 50;
+        Transaction transaction = new Transaction(date, amount);
+        var expectedTransactions = new List<Transaction>{transaction};
+        transactionRepository.Save(transaction);
+
+        transactionRepository.GetAllTransactions().ShouldBe(expectedTransactions);
     }
 }

@@ -4,7 +4,7 @@ namespace BankAccountOutsideIn;
 public class InMemoryTransactionRepository : TransactionRepository
 {
 
-    internal List<Transaction> Transactions{get;}
+    internal List<Transaction> Transactions;
 
     public InMemoryTransactionRepository() {
         this.Transactions = new List<Transaction>();
@@ -16,7 +16,7 @@ public class InMemoryTransactionRepository : TransactionRepository
 
     public List<Transaction> GetAllTransactions()
     {
-        throw new NotImplementedException();
+        return Transactions;
     }
 
     public List<Transaction> orderByDateTime()
