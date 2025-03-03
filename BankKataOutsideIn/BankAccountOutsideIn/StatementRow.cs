@@ -8,4 +8,8 @@ public class StatementRow {
         this.transaction = transaction;
         this.CurrentBalance = CurrentBalance;
     }
+
+    public bool Equals(StatementRow other) {
+        return transaction.Equals(other.transaction) && CurrentBalance == other.CurrentBalance;
+    }
 }

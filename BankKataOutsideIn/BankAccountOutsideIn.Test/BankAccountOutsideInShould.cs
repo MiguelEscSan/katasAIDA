@@ -83,25 +83,10 @@ public class BankAccountOutsideInShould
     {
         if (list1.Count != list2.Count)
             return false;
-
-        for (int i = 0; i < list1.Count; i++)
-        {
-            var statement1 = list1[i];
-            var statement2 = list2[i];
-
-            if (IsSameTransaction(statement1.transaction, statement2.transaction) is false)
-                return false;
-
-            if (statement1.CurrentBalance != statement2.CurrentBalance)
-                return false;
+        for (int i = 0; i < list1.Count; i++) {
+            if (!list1[i].Equals(list2[i])) return false;
         }
-
         return true;
-    }
-
-    private bool IsSameTransaction(Transaction transaction1, Transaction transaction2)
-    {
-        return transaction1.Date == transaction2.Date && transaction1.Amount == transaction2.Amount;
     }
 
 }

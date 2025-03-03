@@ -9,4 +9,8 @@ public class Transaction {
         this.Date = Date;
         this.Amount = Amount;
     }
+
+    public bool Equals(Transaction other) {
+        return this.Date == other.Date && this.Amount == other.Amount;
+    }
 }
