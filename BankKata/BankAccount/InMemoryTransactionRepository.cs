@@ -11,11 +11,11 @@ public class InMemoryTransactionRepository: TransactionRepository {
         Transactions.Add(transaction);
     }
 
-    public List<Transaction> GetAllTransactions() {
+    public List<Transaction> GetAll() {
         return Transactions;
     }
 
-    public List<Transaction> OrderByDateTime() {
+    public List<Transaction> orderByDateTime() {
         var SortedTransactions = new List<Transaction>(this.Transactions);
         SortedTransactions.Sort((x, y) => x.Date.CompareTo(y.Date));
         return SortedTransactions;

@@ -26,7 +26,7 @@ public class Account : AccountService {
     }
 
     private List<StatementRow> GetPrintStatementInformation() {
-        var SortedTransactions = this.transactionRepository.OrderByDateTime();
+        var SortedTransactions = this.transactionRepository.GetAll();
         return GetTransactionsWithBalances(SortedTransactions);
     }
 

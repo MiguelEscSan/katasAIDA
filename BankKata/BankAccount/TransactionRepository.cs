@@ -1,7 +1,7 @@
 namespace BankAccount;
 
 public interface TransactionRepository {
-    List<Transaction> GetAllTransactions();
-    List<Transaction> OrderByDateTime();
+    List<Transaction> GetAll();
+    List<Transaction> orderByDateTime();
     void Save(Transaction transaction);
 }

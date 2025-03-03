@@ -1,5 +1,6 @@
 ﻿using Shouldly;
 using NSubstitute;
+using System.Reflection;
 
 namespace BankAccountOutsideIn.Test;
 
@@ -46,7 +47,7 @@ public class BankAccountOutsideInShould
 
          List<Transaction> transactionRows = [];
 
-        transactionRepository.OrderByDateTime().Returns(transactionRows);
+        transactionRepository.GetAll().Returns(transactionRows);
 
              
         account.printStatement();   
@@ -64,7 +65,7 @@ public class BankAccountOutsideInShould
             new Transaction(date, 10)
         ];
 
-        transactionRepository.OrderByDateTime().Returns(transactionRows);
+        transactionRepository.GetAll().Returns(transactionRows);
 
         account.printStatement();
 

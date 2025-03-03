@@ -14,12 +14,7 @@ public class InMemoryTransactionRepository : TransactionRepository
         Transactions.Add(transaction);
     }
 
-    public List<Transaction> GetAllTransactions()
-    {
-        return Transactions;
-    }
-
-    public List<Transaction> OrderByDateTime()
+    public List<Transaction> GetAll()
     {
         var SortedTransactions = new List<Transaction>(this.Transactions);
         SortedTransactions.Sort((x, y) => x.Date.CompareTo(y.Date));
