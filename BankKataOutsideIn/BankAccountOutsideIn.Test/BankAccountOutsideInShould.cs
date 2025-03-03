@@ -111,6 +111,11 @@ public class BankAccountOutsideInShould
 
     [Test]
     public void print_an_empty_account(){
+
+         List<Transaction> transactionRows = [];
+
+        transactionRepository.orderByDateTime().Returns(transactionRows);
+
              
         account.printStatement();   
 
@@ -120,15 +125,30 @@ public class BankAccountOutsideInShould
 
     [Test]
     public void print_a_non_empty_account() {
-        List<Transaction> statementRows = [ 
+        List<Transaction> transactionRows = [ 
             new Transaction(DateTime.Now, 10),
             new Transaction(DateTime.Now, 1)
         ];
 
-        transactionRepository.orderByDateTime().Returns(statementRows);
+        transactionRepository.orderByDateTime().Returns(transactionRows);
+
         account.printStatement();
 
-        var validation = Arg.Is<List<StatementRow>>(row => row.Count > 0);
+        List<StatementRow> statementRows = [
+            new StatementRow(transactionRows[0], 11),
+            new StatementRow(transactionRows[1],1)
+        ];
+
+
+
+        // var validation = Arg.Is<List<StatementRow>>(list =>list.All(statementRows.Contains));
+        var validation = Arg.Is<List<StatementRow>>(list =>isTheSameList(list, statementRows));
+
+
         printer.Received().Print(validation); 
+    }
+
+    private bool isTheSameList(List<StatementRow> list1, List<StatementRow> list2){
+        return list1.All(list2.Contains);
     }
 }
