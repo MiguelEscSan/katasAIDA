@@ -125,9 +125,11 @@ public class BankAccountOutsideInShould
 
     [Test]
     public void print_a_non_empty_account() {
+        DateTime date = DateTime.Now;
+
         List<Transaction> transactionRows = [ 
-            new Transaction(DateTime.Now, 10),
-            new Transaction(DateTime.Now, 1)
+            new Transaction(date, 1),
+            new Transaction(date, 10)
         ];
 
         transactionRepository.orderByDateTime().Returns(transactionRows);
@@ -135,20 +137,39 @@ public class BankAccountOutsideInShould
         account.printStatement();
 
         List<StatementRow> statementRows = [
-            new StatementRow(transactionRows[0], 11),
-            new StatementRow(transactionRows[1],1)
+            new StatementRow(transactionRows[0], 1),
+            new StatementRow(transactionRows[1], 11)
         ];
 
 
-
-        // var validation = Arg.Is<List<StatementRow>>(list =>list.All(statementRows.Contains));
         var validation = Arg.Is<List<StatementRow>>(list =>isTheSameList(list, statementRows));
-
 
         printer.Received().Print(validation); 
     }
 
-    private bool isTheSameList(List<StatementRow> list1, List<StatementRow> list2){
-        return list1.All(list2.Contains);
+    private bool isTheSameList(List<StatementRow> list1, List<StatementRow> list2)
+    {
+        if (list1.Count != list2.Count)
+            return false;
+
+        for (int i = 0; i < list1.Count; i++)
+        {
+            var statement1 = list1[i];
+            var statement2 = list2[i];
+
+            if (IsSameTransaction(statement1.transaction, statement2.transaction) is false)
+                return false;
+
+            if (statement1.CurrentBalance != statement2.CurrentBalance)
+                return false;
+        }
+
+        return true;
     }
+
+    private bool IsSameTransaction(Transaction transaction1, Transaction transaction2)
+    {
+        return transaction1.Date == transaction2.Date && transaction1.Amount == transaction2.Amount;
+    }
+
 }
