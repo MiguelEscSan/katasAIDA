@@ -1,7 +1,5 @@
 ﻿using Shouldly;
 using NSubstitute;
-using System.Reflection;
-
 namespace BankAccountOutsideIn.Test;
 
 public class BankAccountOutsideInShould
@@ -76,10 +74,24 @@ public class BankAccountOutsideInShould
 
 
         var validation = Arg.Is<List<StatementRow>>(list =>isTheSameList(list, statementRows));
+        // var validation = Arg.Is<List<StatementRow>>(list => areEqual(list, statementRows));
 
         printer.Received().Print(validation); 
+
+   
     }
 
+    // private bool areEqual(List<StatementRow>list1, List<StatementRow> list2){
+    //     try{
+
+    //         list1.ShouldBe(list2);
+    //         return true;
+
+    //     } catch{
+
+    //         return false;
+    //     }
+    // }
     private bool isTheSameList(List<StatementRow> list1, List<StatementRow> list2)
     {
         if (list1.Count != list2.Count)

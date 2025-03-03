@@ -56,7 +56,6 @@ public class ConsolePrinterShould {
             new StatementRow(transactionRows[2], 2500),
         };
 
-        // Capturamos la salida de la consola
         string actualOutput = CaptureConsoleOutput(() => printer.Print(statementRows));
 
         actualOutput.ShouldBe(expectedOutput);
