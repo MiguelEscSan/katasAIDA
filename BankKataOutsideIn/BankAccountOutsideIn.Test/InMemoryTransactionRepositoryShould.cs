@@ -3,12 +3,9 @@ using NSubstitute;
 
 namespace BankAccountOutsideIn.Test;
 
-public class TransactionRepositoryShould {
+public class    InMemoryTransactionRepositoryShould {
 
-    TransactionRepository transactionRepository;
-    Account account;
-    DateProvider dateProvider;
-    Printer printer;
+    InMemoryTransactionRepository transactionRepository;
 
     [SetUp]
     public void SetUp() {
@@ -20,6 +17,11 @@ public class TransactionRepositoryShould {
         var date = new DateTime(2028, 2, 26);
         int amount = 50;
         Transaction transaction = new Transaction(date, amount);
+        var expectedTransactions = new List<Transaction>{transaction};
+        
+        transactionRepository.Save(transaction);
+
+        transactionRepository.Transactions.ShouldBe(expectedTransactions);
        
     }
 }
