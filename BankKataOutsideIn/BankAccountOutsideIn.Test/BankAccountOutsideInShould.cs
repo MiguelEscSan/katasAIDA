@@ -1,6 +1,5 @@
 ﻿using Shouldly;
 using NSubstitute;
-using System.Runtime.CompilerServices;
 
 namespace BankAccountOutsideIn.Test;
 

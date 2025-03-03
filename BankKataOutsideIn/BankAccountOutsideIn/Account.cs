@@ -19,15 +19,13 @@ public class Account : AccountService
     }
 
     public void printStatement() {
-        var currentBalance = Balance;
+        var currentBalance = 0;
         var statementRows = transactionRepository
             .orderByDateTime()
             .Select(transaction => {
                 currentBalance += transaction.Amount;
                 var statementRow = new StatementRow(transaction, currentBalance);
-                // currentBalance += transaction.Amount;
                 return statementRow;
-                // return new StatementRow(transaction, currentBalance);
             }).ToList();
         this.printer.Print(statementRows);
     }
