@@ -21,6 +21,8 @@ public class InMemoryTransactionRepository : TransactionRepository
 
     public List<Transaction> orderByDateTime()
     {
-        throw new NotImplementedException();
+        var SortedTransactions = new List<Transaction>(this.Transactions);
+        SortedTransactions.Sort((x, y) => x.Date.CompareTo(y.Date));
+        return SortedTransactions;
     }
 }
