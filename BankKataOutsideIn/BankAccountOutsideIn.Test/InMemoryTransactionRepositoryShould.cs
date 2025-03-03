@@ -50,6 +50,6 @@ public class    InMemoryTransactionRepositoryShould {
         transactionRepository.Save(transaction2);
         transactionRepository.Save(transaction1);        
 
-        transactionRepository.orderByDateTime().ShouldBe(expectedTransactions);
+        transactionRepository.OrderByDateTime().ShouldBe(expectedTransactions);
     }
 }

@@ -19,7 +19,7 @@ public class Account : AccountService
     }
 
     public void printStatement() {
-        var sortedTransactions = transactionRepository.orderByDateTime();
+        var sortedTransactions = transactionRepository.OrderByDateTime();
         var statementsInfo = GetTransactionsWithBalances(sortedTransactions);
         this.printer.Print(statementsInfo);
     }

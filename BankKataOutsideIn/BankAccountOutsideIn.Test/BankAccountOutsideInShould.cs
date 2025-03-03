@@ -46,7 +46,7 @@ public class BankAccountOutsideInShould
 
          List<Transaction> transactionRows = [];
 
-        transactionRepository.orderByDateTime().Returns(transactionRows);
+        transactionRepository.OrderByDateTime().Returns(transactionRows);
 
              
         account.printStatement();   
@@ -64,7 +64,7 @@ public class BankAccountOutsideInShould
             new Transaction(date, 10)
         ];
 
-        transactionRepository.orderByDateTime().Returns(transactionRows);
+        transactionRepository.OrderByDateTime().Returns(transactionRows);
 
         account.printStatement();
 

@@ -1,6 +1,6 @@
 namespace BankAccountOutsideIn;
 public interface TransactionRepository {
     List<Transaction> GetAllTransactions();
-    List<Transaction> orderByDateTime();
+    List<Transaction> OrderByDateTime();
     void Save(Transaction transaction);
 }
