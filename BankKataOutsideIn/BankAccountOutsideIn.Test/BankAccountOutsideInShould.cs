@@ -71,35 +71,22 @@ public class BankAccountOutsideInShould
             new StatementRow(transactionRows[0], 1),
             new StatementRow(transactionRows[1], 11)
         ];
-
-
-        var validation = Arg.Is<List<StatementRow>>(list =>isTheSameList(list, statementRows));
-        // var validation = Arg.Is<List<StatementRow>>(list => areEqual(list, statementRows));
+        var validation = Arg.Is<List<StatementRow>>(list => areEqual(list, statementRows));
 
         printer.Received().Print(validation); 
 
    
     }
 
-    // private bool areEqual(List<StatementRow>list1, List<StatementRow> list2){
-    //     try{
+    private bool areEqual(List<StatementRow>list1, List<StatementRow> list2){
+        try{
 
-    //         list1.ShouldBe(list2);
-    //         return true;
+            list1.ShouldBeEquivalentTo(list2);
+            return true;
 
-    //     } catch{
+        } catch{
 
-    //         return false;
-    //     }
-    // }
-    private bool isTheSameList(List<StatementRow> list1, List<StatementRow> list2)
-    {
-        if (list1.Count != list2.Count)
             return false;
-        for (int i = 0; i < list1.Count; i++) {
-            if (!list1[i].Equals(list2[i])) return false;
         }
-        return true;
     }
-
 }
