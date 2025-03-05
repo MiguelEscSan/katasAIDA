@@ -10,7 +10,8 @@ public class ConsolePrinter: Printer{
         for (int index = StatementInformation.Count - 1; index >= 0; index--) {
             output.AppendLine($"{FormatTransaction(StatementInformation[index].transaction)} || {StatementInformation[index].CurrentBalance}");
         }
-        System.Console.WriteLine(output.ToString());
+        string finalOutput = output.ToString().TrimEnd(); 
+        System.Console.WriteLine(finalOutput.ToString());
     }
 
      private string FormatTransaction(Transaction transaction) {
